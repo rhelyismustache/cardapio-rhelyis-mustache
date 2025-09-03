@@ -688,10 +688,10 @@
                 
                 itemCard.innerHTML = `
                     <div class="relative">
-                        <img src="${item.image_url || 'https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=' + encodeURIComponent(item.name )}" 
+                        <img src="${item.image_url || 'https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=Prato'}" 
                              alt="${item.name}" 
                              class="w-full h-52 object-cover"
-                             onerror="this.src='https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=' + encodeURIComponent('${item.name}' )}">
+                             onerror="this.src='https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=' + encodeURIComponent('Prato' )}">
                         <div class="absolute top-4 right-4">
                             <span class="premium-badge">${item.protein || 'Proteína'}</span>
                         </div>
