@@ -40,7 +40,7 @@
                         'neon-yellow': '#FDE047'
                     },
                     animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1 ) infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'bounce-slow': 'bounce 2s infinite',
                         'fade-in': 'fadeIn 0.5s ease-in-out',
                         'slide-up': 'slideUp 0.5s ease-out',
@@ -83,7 +83,7 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap' );
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
@@ -403,7 +403,7 @@
             <div class="error-message">
                 <h3 class="text-xl font-bold mb-2">Ops! Algo deu errado</h3>
                 <p>Não foi possível carregar o cardápio. Tente novamente em alguns instantes.</p>
-                <button onclick="loadMenuData( )" class="mt-4 bg-white text-red-600 px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition-all">
+                <button onclick="loadMenuData()" class="mt-4 bg-white text-red-600 px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition-all">
                     Tentar Novamente
                 </button>
             </div>
@@ -506,9 +506,9 @@
     <script>
         // 🔥 CONFIGURAÇÕES PRINCIPAIS - ALTERE AQUI
         // URL do Google Sheets publicado como CSV
-        const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRFja7w_0mQO2sbK4-AHAiOSKQpmJ2I2W6TwzwbXBekkbgH8m0B77jaXcvu3mJhwMp9-9EPVUx345GR/pub?gid=0&single=true&output=csv";
+        const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSH36sDrFXiW7FaWUgZl4BqlXmRde2hUr8LoB0ibudTR6ZPx-QT17ZvqkOhJEJ128LURxVvNI_W4H2L/pub?gid=0&single=true&output=csv";
         
-        // Número padrão do WhatsApp (será sobrescrito pelos dados do Google Sheets se disponível )
+        // Número padrão do WhatsApp (será sobrescrito pelos dados do Google Sheets se disponível)
         let defaultWhatsAppNumber = "+5511978361049";
 
         // Variáveis globais
@@ -603,7 +603,7 @@
                 { id: 5, name: "Bowl Vegetariano", category: "vegetarianos", price: 22.90, description: "Bowl completo com quinoa, legumes grelhados e molho tahine", protein: "Média", calories: "Baixa", image_url: "https://via.placeholder.com/300x200/10B981/FFFFFF?text=Bowl+Vegetariano", whatsapp_number: "+5511978361049" }
             ];
 
-            renderCategories( );
+            renderCategories();
             renderMenuItems();
             
             document.getElementById('loadingState').classList.add('hidden');
@@ -688,10 +688,10 @@
                 
                 itemCard.innerHTML = `
                     <div class="relative">
-                        <img src="${item.image_url || 'https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=Prato'}" 
+                        <img src="${item.image_url || 'https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=' + encodeURIComponent(item.name)}" 
                              alt="${item.name}" 
                              class="w-full h-52 object-cover"
-                             onerror="this.src='https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=' + encodeURIComponent('Prato' )}">
+                             onerror="this.src='https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=' + encodeURIComponent('${item.name}')">
                         <div class="absolute top-4 right-4">
                             <span class="premium-badge">${item.protein || 'Proteína'}</span>
                         </div>
@@ -816,7 +816,7 @@
         // Função para abrir combo WhatsApp
         function openComboWhatsApp() {
             const message = encodeURIComponent(`Olá! Gostaria de solicitar um combo personalizado do Rhelyi's Mustache. Podem me ajudar com as opções disponíveis?`);
-            window.open(`https://wa.me/${defaultWhatsAppNumber.replace('+', '' )}?text=${message}`, '_blank');
+            window.open(`https://wa.me/${defaultWhatsAppNumber.replace('+', '')}?text=${message}`, '_blank');
         }
 
         // Função para enviar pedido via WhatsApp
@@ -856,7 +856,7 @@
             message += `\n🚚 Aguardo confirmação do pedido e informações sobre entrega!`;
 
             const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/${defaultWhatsAppNumber.replace('+', '' )}?text=${encodedMessage}`, '_blank');
+            window.open(`https://wa.me/${defaultWhatsAppNumber.replace('+', '')}?text=${encodedMessage}`, '_blank');
         }
 
         // Event Listeners
