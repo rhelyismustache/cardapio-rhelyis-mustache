@@ -257,6 +257,38 @@
             .brand-title {
                 font-size: 1.5rem;
             }
+            
+            .hero-section {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-section p {
+                font-size: 1rem;
+            }
+            
+            .menu-item-card {
+                margin-bottom: 1rem;
+            }
+            
+            .menu-item-card img {
+                height: 180px;
+            }
+            
+            .category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+            
+            .add-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
         }
 
         .brand-subtitle {
@@ -342,6 +374,9 @@
                 align-self: center;
                 width: 100%;
                 max-width: 200px;
+                position: sticky;
+                top: 0;
+                z-index: 20;
             }
             
             .cart-btn {
@@ -349,6 +384,9 @@
                 justify-content: center;
                 padding: 0.75rem 1.5rem;
                 font-size: 1rem;
+                position: relative;
+                display: flex;
+                align-items: center;
             }
         }
 
@@ -467,7 +505,7 @@
             <div class="flex items-center justify-between mobile-header">
                 <div class="flex items-center gap-4 logo-section">
                     <!-- Logo será carregado dinamicamente do Google Sheets -->
-                    <img id="logoImage" src="https://via.placeholder.com/80x80/8B5CF6/FFFFFF?text=LOGO" alt="Rhelyi's Mustache Logo" class="logo-image">
+                    <img id="logoImage" src="https://i.imgur.com/example.png" alt="Rhelyi's Mustache Logo" class="logo-image" onerror="this.src='https://via.placeholder.com/80x80/8B5CF6/FFFFFF?text=LOGO'">
                     
                     <div>
                         <h1 class="brand-title">Rhelyi's Mustache</h1>
@@ -587,11 +625,7 @@
                         <label class="block text-sm font-bold text-white mb-2">📍 Endereço de entrega:</label>
                         <textarea id="customerAddress" class="input-field w-full px-4 py-3 rounded-lg focus:outline-none text-sm" rows="3" placeholder="Rua, número, bairro, cidade..."></textarea>
                     </div>
-                    
-                    <div class="mb-4">
-                        <label class="block text-sm font-bold text-white mb-2">💬 Observações (opcional):</label>
-                        <textarea id="customerNotes" class="input-field w-full px-4 py-3 rounded-lg focus:outline-none text-sm" rows="2" placeholder="Alguma observação especial sobre seu pedido..."></textarea>
-                    </div>
+
                     
                     <div class="flex justify-between items-center mb-6 p-4 bg-mustache-purple text-white rounded-lg">
                         <span class="text-lg md:text-xl font-black">Total: R$ <span id="cartTotal">0,00</span></span>
@@ -930,7 +964,6 @@
         function sendWhatsAppOrder() {
             const customerName = document.getElementById('customerName').value.trim();
             const customerAddress = document.getElementById('customerAddress').value.trim();
-            const customerNotes = document.getElementById('customerNotes').value.trim();
 
             if (!customerName || !customerAddress) {
                 alert('Por favor, preencha seu nome e endereço de entrega.');
@@ -955,11 +988,6 @@
             });
 
             message += `\n💰 *Total: R$ ${total.toFixed(2).replace('.', ',')}*\n`;
-
-            if (customerNotes) {
-                message += `\n💬 *Observações:* ${customerNotes}\n`;
-            }
-
             message += `\n🚚 Aguardo confirmação do pedido e informações sobre entrega!`;
 
             const encodedMessage = encodeURIComponent(message);
