@@ -765,6 +765,36 @@
         </div>
     </div>
 
+    <!-- Modal Monte sua Massa -->
+    <div id="customPastaModal" class="fixed inset-0 modal-backdrop z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="modal-content rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden">
+                <div class="gradient-bg-enhanced p-6 text-white flex-shrink-0">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl md:text-2xl font-black">🍝 Monte sua Massa</h2>
+                        <button id="closeCustomPasta" class="text-white hover:text-gray-300 text-3xl font-bold">&times;</button>
+                    </div>
+                </div>
+                
+                <div class="p-6 overflow-y-scroll flex-grow">
+                    <div id="customPastaContent">
+                        <!-- Conteúdo será inserido dinamicamente -->
+                    </div>
+                </div>
+                
+                <div class="p-6 border-t bg-gray-800 border-mustache-purple flex-shrink-0">
+                    <div class="flex justify-between items-center mb-6 p-4 bg-mustache-purple text-white rounded-lg">
+                        <span class="text-lg md:text-xl font-black">Total: R$ <span id="customPastaTotal">0,00</span></span>
+                    </div>
+                    
+                    <button id="addCustomPastaToCart" class="w-full add-btn text-mustache-black py-4 rounded-lg font-black text-base md:text-lg shadow-lg">
+                        🍝 Adicionar Massa Personalizada ao Carrinho
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // 🔥 CONFIGURAÇÕES PRINCIPAIS - ALTERE AQUI
         // URL do Google Sheets publicado como CSV
@@ -888,7 +918,7 @@
                 'bovinos': '🥩',
                 'suinos': '🐷',
                 'vegetarianos': '🌱',
-                'massas': '🍝',
+                'Monte sua Massa': '🍝',
                 'premium': '⭐',
                 'saladas': '🥗'
             };
@@ -899,7 +929,7 @@
                 'bovinos': 'Bovinos',
                 'suinos': 'Suínos',
                 'vegetarianos': 'Vegetarianos',
-                'massas': 'Monte Sua Massa',
+                'Monte sua Massa': 'Monte sua Massa',
                 'premium': 'Seleção Premium',
                 'saladas': 'Saladas do Chef'
             };
@@ -1020,11 +1050,33 @@
         // Função para renderizar itens do menu
         function renderMenuItems() {
             const menuItems = document.getElementById('menuItems');
-            const filteredItems = currentCategory === 'all' 
+            let filteredItems = currentCategory === 'all' 
                 ? menuData 
                 : menuData.filter(item => item.category === currentCategory);
 
+            // Filtrar itens da categoria "Monte sua Massa" para não aparecerem na lista principal
+            filteredItems = filteredItems.filter(item => item.category !== "Monte sua Massa");
+
             menuItems.innerHTML = '';
+
+            // Se a categoria selecionada for "Monte sua Massa", mostrar botão especial
+            if (currentCategory === "Monte sua Massa") {
+                menuItems.innerHTML = `
+                    <div class="col-span-full flex justify-center">
+                        <div class="menu-item-card rounded-3xl overflow-hidden shadow-xl card-hover animate-fade-in max-w-md w-full">
+                            <div class="p-8 text-center">
+                                <div class="text-6xl mb-4">🍝</div>
+                                <h3 class="text-2xl font-black text-white mb-4">Monte sua Massa Personalizada</h3>
+                                <p class="text-gray-300 mb-6">Escolha sua base, molho, proteína e base especial para criar a massa perfeita!</p>
+                                <button onclick="openCustomPastaModal()" class="add-btn text-mustache-black px-8 py-4 rounded-full transition-all font-bold shadow-lg text-lg">
+                                    🍝 Personalizar Massa
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
 
             filteredItems.forEach(item => {
                 const itemCard = document.createElement('div');
@@ -1063,6 +1115,12 @@
         function addToCart(itemId) {
             const item = menuData.find(i => i.id === itemId);
             if (!item) return;
+
+            // Verificar se é da categoria "Monte sua Massa"
+            if (item.category === "Monte sua Massa") {
+                openCustomPastaModal();
+                return;
+            }
 
             const existingItem = cart.find(i => i.id === itemId);
             if (existingItem) {
@@ -1203,6 +1261,285 @@
             window.open(`https://wa.me/${defaultWhatsAppNumber.replace('+', '')}?text=${encodedMessage}`, '_blank');
         }
 
+        // Variáveis para massa personalizada
+        let customPastaSelection = {
+            base: null,
+            baseEspecial: null,
+            molho: null,
+            proteina: {} // Mudado para objeto para suportar múltiplas proteínas com quantidades
+        };
+
+        // Função para abrir modal de massa personalizada
+        function openCustomPastaModal() {
+            const modal = document.getElementById('customPastaModal');
+            modal.classList.remove('hidden');
+            renderCustomPastaContent();
+        }
+
+        // Função para fechar modal de massa personalizada
+        function closeCustomPastaModal() {
+            const modal = document.getElementById('customPastaModal');
+            modal.classList.add('hidden');
+            // Resetar seleções
+            customPastaSelection = {
+                base: null,
+                baseEspecial: null,
+                molho: null,
+                proteina: {}
+            };
+        }
+
+        // Função para renderizar conteúdo da modal de massa personalizada
+        function renderCustomPastaContent() {
+            const content = document.getElementById('customPastaContent');
+            const pastaItems = menuData.filter(item => item.category === "Monte sua Massa");
+            
+            // Agrupar itens por tipo
+            const groupedItems = {
+                base: pastaItems.filter(item => item.type === "Base"),
+                baseEspecial: pastaItems.filter(item => item.type === "Base Especial"),
+                molho: pastaItems.filter(item => item.type === "Molho"),
+                proteina: pastaItems.filter(item => item.type === "Proteina")
+            };
+
+            let html = '';
+
+            // Base (obrigatória)
+            html += `
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold text-white mb-4">🍝 Escolha sua Base *</h3>
+                    <div class="space-y-3">
+            `;
+            groupedItems.base.forEach(item => {
+                html += `
+                    <label class="flex items-center p-3 bg-gray-700 rounded-lg cursor-pointer hover:bg-gray-600 transition-all">
+                        <input type="radio" name="base" value="${item.id}" class="mr-3 text-mustache-purple" onchange="updateCustomPastaSelection('base', ${item.id})">
+                        <div class="flex-1">
+                            <div class="font-semibold text-white">${item.name}</div>
+                            <div class="text-sm text-gray-300">${item.description}</div>
+                        </div>
+                        <div class="text-mustache-yellow font-bold">${item.price > 0 ? 'R$ ' + item.price.toFixed(2).replace('.', ',') : ''}</div>
+                    </label>
+                `;
+            });
+            html += '</div></div>';
+
+            // Base Especial (opcional)
+            if (groupedItems.baseEspecial.length > 0) {
+                html += `
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold text-white mb-4">✨ Base Especial (Opcional)</h3>
+                        <div class="space-y-3">
+                `;
+                groupedItems.baseEspecial.forEach(item => {
+                    html += `
+                        <label class="flex items-center p-3 bg-gray-700 rounded-lg cursor-pointer hover:bg-gray-600 transition-all">
+                            <input type="radio" name="baseEspecial" value="${item.id}" class="mr-3 text-mustache-purple" onchange="updateCustomPastaSelection('baseEspecial', ${item.id})">
+                            <div class="flex-1">
+                                <div class="font-semibold text-white">${item.name}</div>
+                                <div class="text-sm text-gray-300">${item.description}</div>
+                            </div>
+                            <div class="text-mustache-yellow font-bold">${item.price > 0 ? '+R$ ' + item.price.toFixed(2).replace('.', ',') : ''}</div>
+                        </label>
+                    `;
+                });
+                html += '</div></div>';
+            }
+
+            // Molho (obrigatório)
+            html += `
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold text-white mb-4">🍅 Escolha seu Molho *</h3>
+                    <div class="space-y-3">
+            `;
+            groupedItems.molho.forEach(item => {
+                html += `
+                    <label class="flex items-center p-3 bg-gray-700 rounded-lg cursor-pointer hover:bg-gray-600 transition-all">
+                        <input type="radio" name="molho" value="${item.id}" class="mr-3 text-mustache-purple" onchange="updateCustomPastaSelection('molho', ${item.id})">
+                        <div class="flex-1">
+                            <div class="font-semibold text-white">${item.name}</div>
+                            <div class="text-sm text-gray-300">${item.description}</div>
+                        </div>
+                        <div class="text-mustache-yellow font-bold">${item.price > 0 ? 'R$ ' + item.price.toFixed(2).replace('.', ',') : ''}</div>
+                    </label>
+                `;
+            });
+            html += '</div></div>';
+
+            // Proteína (múltipla seleção com quantidade)
+            html += `
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold text-white mb-4">🥩 Escolha suas Proteínas</h3>
+                    <div class="space-y-3">
+            `;
+            groupedItems.proteina.forEach(item => {
+                html += `
+                    <div class="p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-all">
+                        <div class="flex items-center">
+                            <input type="checkbox" name="proteina" value="${item.id}" class="mr-3 text-mustache-purple" onchange="toggleProteina(${item.id})">
+                            <div class="flex-1">
+                                <div class="font-semibold text-white">${item.name}</div>
+                                <div class="text-sm text-gray-300">${item.description}</div>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="text-mustache-yellow font-bold">${item.price > 0 ? 'R$ ' + item.price.toFixed(2).replace('.', ',') : ''}</div>
+                                <div class="flex items-center gap-1 ml-4" id="proteina-controls-${item.id}" style="display: none;">
+                                    <button onclick="updateProteinaQuantity(${item.id}, -1)" class="bg-gray-600 text-white w-6 h-6 rounded-full hover:bg-gray-500 transition-all text-sm">-</button>
+                                    <span class="text-white font-bold text-sm min-w-[20px] text-center" id="proteina-qty-${item.id}">1</span>
+                                    <button onclick="updateProteinaQuantity(${item.id}, 1)" class="bg-mustache-purple text-white w-6 h-6 rounded-full hover:bg-purple-600 transition-all text-sm">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div></div>';
+
+            content.innerHTML = html;
+            updateCustomPastaTotal();
+        }
+
+        // Função para atualizar seleção da massa personalizada
+        function updateCustomPastaSelection(type, itemId) {
+            customPastaSelection[type] = itemId;
+            updateCustomPastaTotal();
+        }
+
+        // Função para alternar proteína (checkbox)
+        function toggleProteina(itemId) {
+            const checkbox = document.querySelector(`input[value="${itemId}"]`);
+            const controls = document.getElementById(`proteina-controls-${itemId}`);
+            
+            if (checkbox.checked) {
+                customPastaSelection.proteina[itemId] = 1;
+                controls.style.display = 'flex';
+            } else {
+                delete customPastaSelection.proteina[itemId];
+                controls.style.display = 'none';
+            }
+            updateCustomPastaTotal();
+        }
+
+        // Função para atualizar quantidade de proteína
+        function updateProteinaQuantity(itemId, change) {
+            const currentQty = customPastaSelection.proteina[itemId] || 0;
+            const newQty = Math.max(1, currentQty + change);
+            
+            customPastaSelection.proteina[itemId] = newQty;
+            document.getElementById(`proteina-qty-${itemId}`).textContent = newQty;
+            updateCustomPastaTotal();
+        }
+
+        // Função para atualizar total da massa personalizada
+        function updateCustomPastaTotal() {
+            let total = 0;
+            const totalElement = document.getElementById('customPastaTotal');
+            
+            // Adicionar base, base especial e molho
+            ['base', 'baseEspecial', 'molho'].forEach(type => {
+                const itemId = customPastaSelection[type];
+                if (itemId) {
+                    const item = menuData.find(i => i.id === itemId);
+                    if (item) {
+                        total += item.price;
+                    }
+                }
+            });
+            
+            // Adicionar proteínas (múltiplas com quantidades)
+            Object.entries(customPastaSelection.proteina).forEach(([itemId, quantity]) => {
+                const item = menuData.find(i => i.id === parseInt(itemId));
+                if (item) {
+                    total += item.price * quantity;
+                }
+            });
+            
+            totalElement.textContent = total.toFixed(2).replace('.', ',');
+        }
+
+        // Função para adicionar massa personalizada ao carrinho
+        function addCustomPastaToCart() {
+            // Validar se base e molho foram selecionados
+            if (!customPastaSelection.base || !customPastaSelection.molho) {
+                alert('Por favor, selecione pelo menos uma base e um molho.');
+                return;
+            }
+
+            // Verificar se pelo menos uma proteína foi selecionada
+            const selectedProteinas = Object.keys(customPastaSelection.proteina);
+            if (selectedProteinas.length === 0) {
+                alert('Por favor, selecione pelo menos uma proteína.');
+                return;
+            }
+
+            // Criar nome personalizado da massa
+            const baseItem = menuData.find(i => i.id === customPastaSelection.base);
+            const baseEspecialItem = customPastaSelection.baseEspecial ? menuData.find(i => i.id === customPastaSelection.baseEspecial) : null;
+            const molhoItem = menuData.find(i => i.id === customPastaSelection.molho);
+
+            let customName = `Massa Personalizada: ${baseItem.name}`;
+            if (baseEspecialItem) {
+                customName += ` + ${baseEspecialItem.name}`;
+            }
+            customName += ` + ${molhoItem.name}`;
+
+            // Adicionar proteínas ao nome
+            const proteinaNames = [];
+            Object.entries(customPastaSelection.proteina).forEach(([itemId, quantity]) => {
+                const proteinaItem = menuData.find(i => i.id === parseInt(itemId));
+                if (proteinaItem) {
+                    if (quantity > 1) {
+                        proteinaNames.push(`${quantity}x ${proteinaItem.name}`);
+                    } else {
+                        proteinaNames.push(proteinaItem.name);
+                    }
+                }
+            });
+            customName += ` + ${proteinaNames.join(', ')}`;
+
+            // Calcular preço total
+            let totalPrice = baseItem.price + molhoItem.price;
+            if (baseEspecialItem) {
+                totalPrice += baseEspecialItem.price;
+            }
+            
+            // Adicionar preço das proteínas
+            Object.entries(customPastaSelection.proteina).forEach(([itemId, quantity]) => {
+                const proteinaItem = menuData.find(i => i.id === parseInt(itemId));
+                if (proteinaItem) {
+                    totalPrice += proteinaItem.price * quantity;
+                }
+            });
+
+            // Criar descrição detalhada
+            let description = `Massa personalizada com ${baseItem.name.toLowerCase()}, ${molhoItem.name.toLowerCase()}`;
+            if (baseEspecialItem) {
+                description += `, ${baseEspecialItem.name.toLowerCase()}`;
+            }
+            description += ` e ${proteinaNames.join(', ').toLowerCase()}`;
+
+            // Criar item personalizado
+            const customItem = {
+                id: `custom_pasta_${Date.now()}`, // ID único para evitar conflitos
+                name: customName,
+                category: "Monte sua Massa",
+                price: totalPrice,
+                description: description,
+                quantity: 1,
+                isCustom: true
+            };
+
+            // Adicionar ao carrinho
+            cart.push(customItem);
+            updateCartUI();
+            
+            // Fechar modal
+            closeCustomPastaModal();
+            
+            // Feedback visual
+            alert('Massa personalizada adicionada ao carrinho!');
+        }
+
         // Event Listeners
         document.addEventListener('DOMContentLoaded', function() {
             loadMenuData();
@@ -1223,6 +1560,17 @@
             document.getElementById('cartModal').addEventListener('click', (e) => {
                 if (e.target.id === 'cartModal') {
                     document.getElementById('cartModal').classList.add('hidden');
+                }
+            });
+
+            // Event listeners para modal de massa personalizada
+            document.getElementById('closeCustomPasta').addEventListener('click', closeCustomPastaModal);
+            document.getElementById('addCustomPastaToCart').addEventListener('click', addCustomPastaToCart);
+
+            // Fechar modal de massa personalizada clicando fora
+            document.getElementById('customPastaModal').addEventListener('click', (e) => {
+                if (e.target.id === 'customPastaModal') {
+                    closeCustomPastaModal();
                 }
             });
         });
