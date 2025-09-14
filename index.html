@@ -331,7 +331,6 @@
             .mobile-header {
                 flex-direction: column;
                 gap: 1rem;
-                padding: 1rem;
             }
             
             .mobile-header .logo-section {
@@ -458,24 +457,176 @@
                 height: 60px;
             }
         }
+
+        /* Custom Select Styles */
+        .custom-select-container {
+            position: relative;
+        }
+
+        .custom-select {
+            background: linear-gradient(145deg, #1F2937, #374151);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-select::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .custom-select:hover::before {
+            left: 100%;
+        }
+
+        .custom-select:hover {
+            border-color: rgba(139, 92, 246, 0.6);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .custom-select.active {
+            border-color: #8B5CF6;
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .custom-select.active #selectArrow {
+            transform: rotate(180deg);
+        }
+
+        .custom-select-dropdown {
+            background: linear-gradient(145deg, #1F2937, #374151);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .custom-select-dropdown.show {
+            display: block !important;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .custom-select-option {
+            padding: 12px 20px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-select-option:last-child {
+            border-bottom: none;
+        }
+
+        .custom-select-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+            transition: left 0.3s;
+        }
+
+        .custom-select-option:hover::before {
+            left: 100%;
+        }
+
+        .custom-select-option:hover {
+            background: rgba(139, 92, 246, 0.2);
+            color: #A78BFA;
+            transform: translateX(5px);
+        }
+
+        .custom-select-option.selected {
+            background: linear-gradient(45deg, #8B5CF6, #A855F7);
+            color: white;
+            font-weight: 600;
+        }
+
+        .custom-select-option.selected::after {
+            content: '✓';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-weight: bold;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scrollbar personalizada para o dropdown */
+        .custom-select-dropdown::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-select-dropdown::-webkit-scrollbar-track {
+            background: #374151;
+            border-radius: 3px;
+        }
+
+        .custom-select-dropdown::-webkit-scrollbar-thumb {
+            background: #8B5CF6;
+            border-radius: 3px;
+        }
+
+        .custom-select-dropdown::-webkit-scrollbar-thumb:hover {
+            background: #A855F7;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .custom-select-container {
+                max-width: 100%;
+            }
+            
+            .custom-select {
+                padding: 12px 16px;
+            }
+            
+            .custom-select-option {
+                padding: 14px 16px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body class="bg-black min-h-screen">
     <!-- Header Premium - Mobile Optimized -->
     <header class="gradient-bg-enhanced shadow-2xl sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4">
-            <div class="flex items-center justify-between mobile-header">
+            <div class="flex gap-4 flex-row items-center justify-between mobile-header">
                 <div class="flex items-center gap-4 logo-section">
                     <!-- Logo será carregado dinamicamente do Google Sheets -->
                     <img id="logoImage" src="https://via.placeholder.com/80x80/8B5CF6/FFFFFF?text=LOGO" alt="Rhelyi's Mustache Logo" class="logo-image">
                     
                     <div>
-                        <h1 class="brand-title">Rhelyi's Mustache</h1>
-                        <p class="brand-subtitle text-sm md:text-base">Alimentação Fitness & Saudável</p>
+                        <h1 class="hidden brand-title sm:block">Rhelyi's Mustache</h1>
+                        <p class="hidden brand-subtitle text-sm sm:block md:text-base">Alimentação Fitness & Saudável</p>
                         <div class="flex gap-2 mt-2 flex-wrap">
-                            <span class="fitness-badge text-xs">💪 FITNESS</span>
-                            <span class="fitness-badge text-xs">🥗 SAUDÁVEL</span>
-                            <span class="fitness-badge text-xs">🚚 DELIVERY</span>
+                            <span class="hidden fitness-badge text-xs sm:block">💪 FITNESS</span>
+                            <span class="hidden fitness-badge text-xs sm:block">🥗 SAUDÁVEL</span>
+                            <span class="hidden fitness-badge text-xs sm:block">🚚 DELIVERY</span>
                         </div>
                     </div>
                 </div>
@@ -527,8 +678,22 @@
 
             <!-- Categorias -->
             <div class="mb-8">
-                <div id="categoryButtons" class="flex flex-wrap gap-2 md:gap-3 justify-center">
-                    <!-- Categorias serão inseridas dinamicamente -->
+                <div class="flex justify-center">
+                    <div class="custom-select-container relative w-full max-w-md">
+                        <div id="categorySelect" class="custom-select bg-gray-800 border-2 border-mustache-purple rounded-full px-6 py-4 cursor-pointer transition-all duration-300 hover:border-purple-400 hover:shadow-lg">
+                            <div class="flex items-center justify-between">
+                                <span id="selectedCategory" class="text-white font-semibold">Todos os Pratos</span>
+                                <svg id="selectArrow" class="w-5 h-5 text-mustache-purple transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div id="selectDropdown" class="custom-select-dropdown absolute top-full left-0 right-0 mt-2 bg-gray-800 border-2 border-mustache-purple rounded-2xl shadow-2xl z-50 hidden overflow-hidden">
+                            <div class="max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-mustache-purple scrollbar-track-gray-700">
+                                <!-- Opções serão inseridas dinamicamente -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -561,7 +726,7 @@
     <!-- Modal do Carrinho - Mobile Optimized -->
     <div id="cartModal" class="fixed inset-0 modal-backdrop z-50 hidden">
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="modal-content rounded-3xl max-w-lg w-full shadow-2xl">
+            <div class="modal-content rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden">
                 <div class="gradient-bg-enhanced p-6 text-white flex-shrink-0">
                     <div class="flex justify-between items-center">
                         <h2 class="text-xl md:text-2xl font-black">🛒 Seu Pedido Fitness</h2>
@@ -715,14 +880,8 @@
         // Função para renderizar categorias
         function renderCategories() {
             const categories = [...new Set(menuData.map(item => item.category))];
-            const categoryButtons = document.getElementById('categoryButtons');
+            const selectDropdown = document.getElementById('selectDropdown');
             
-            categoryButtons.innerHTML = `
-                <button class="category-btn category-active bg-mustache-purple text-white px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-purple-600 transition-all font-bold shadow-lg text-sm md:text-base" data-category="all">
-                    Todos os Pratos
-                </button>
-            `;
-
             const categoryIcons = {
                 'aves': '🐔',
                 'peixes': '🐟',
@@ -745,34 +904,117 @@
                 'saladas': 'Saladas do Chef'
             };
 
+            // Adicionar opção "Todos os Pratos"
+            selectDropdown.innerHTML = `
+                <div class="custom-select-option selected" data-category="all">
+                    🍽️ Todos os Pratos
+                </div>
+            `;
+
+            // Adicionar outras categorias
             categories.forEach(category => {
                 const icon = categoryIcons[category] || '🍽️';
                 const categoryName = categoryNames[category] || category.charAt(0).toUpperCase() + category.slice(1);
                 
-                categoryButtons.innerHTML += `
-                    <button class="category-btn bg-gray-800 text-white px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-gray-700 transition-all font-bold text-sm md:text-base" data-category="${category}">
+                selectDropdown.innerHTML += `
+                    <div class="custom-select-option" data-category="${category}">
                         ${icon} ${categoryName}
-                    </button>
+                    </div>
                 `;
             });
 
-            // Adicionar event listeners
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    currentCategory = e.target.dataset.category;
+            // Adicionar event listeners para as opções
+            document.querySelectorAll('.custom-select-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    const selectedCategory = e.target.dataset.category;
+                    const selectedText = e.target.textContent.trim();
                     
-                    // Atualizar botões ativos
-                    document.querySelectorAll('.category-btn').forEach(b => {
-                        b.classList.remove('category-active');
-                        b.classList.add('bg-gray-800');
+                    // Atualizar categoria atual
+                    currentCategory = selectedCategory;
+                    
+                    // Atualizar texto selecionado
+                    document.getElementById('selectedCategory').textContent = selectedText;
+                    
+                    // Atualizar opções selecionadas
+                    document.querySelectorAll('.custom-select-option').forEach(opt => {
+                        opt.classList.remove('selected');
                     });
+                    e.target.classList.add('selected');
                     
-                    e.target.classList.add('category-active');
-                    e.target.classList.remove('bg-gray-800');
+                    // Fechar dropdown
+                    closeSelectDropdown();
                     
+                    // Renderizar itens do menu
                     renderMenuItems();
                 });
             });
+
+            // Inicializar funcionalidade do select
+            initializeSelect();
+        }
+
+        // Função para inicializar o comportamento do Select
+        function initializeSelect() {
+            const categorySelect = document.getElementById('categorySelect');
+            const selectDropdown = document.getElementById('selectDropdown');
+            const selectArrow = document.getElementById('selectArrow');
+
+            // Abrir/fechar dropdown ao clicar no select
+            categorySelect.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleSelectDropdown();
+            });
+
+            // Fechar dropdown ao clicar fora
+            document.addEventListener('click', (e) => {
+                if (!categorySelect.contains(e.target) && !selectDropdown.contains(e.target)) {
+                    closeSelectDropdown();
+                }
+            });
+
+            // Fechar dropdown ao pressionar Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeSelectDropdown();
+                }
+            });
+        }
+
+        // Função para alternar o dropdown
+        function toggleSelectDropdown() {
+            const selectDropdown = document.getElementById('selectDropdown');
+            const categorySelect = document.getElementById('categorySelect');
+            const selectArrow = document.getElementById('selectArrow');
+
+            if (selectDropdown.classList.contains('hidden')) {
+                openSelectDropdown();
+            } else {
+                closeSelectDropdown();
+            }
+        }
+
+        // Função para abrir o dropdown
+        function openSelectDropdown() {
+            const selectDropdown = document.getElementById('selectDropdown');
+            const categorySelect = document.getElementById('categorySelect');
+            const selectArrow = document.getElementById('selectArrow');
+
+            selectDropdown.classList.remove('hidden');
+            selectDropdown.classList.add('show');
+            categorySelect.classList.add('active');
+            selectArrow.style.transform = 'rotate(180deg)';
+        }
+
+        // Função para fechar o dropdown
+        function closeSelectDropdown() {
+            const selectDropdown = document.getElementById('selectDropdown');
+            const categorySelect = document.getElementById('categorySelect');
+            const selectArrow = document.getElementById('selectArrow');
+
+            selectDropdown.classList.add('hidden');
+            selectDropdown.classList.remove('show');
+            categorySelect.classList.remove('active');
+            selectArrow.style.transform = 'rotate(0deg)';
         }
 
         // Função para renderizar itens do menu
@@ -791,9 +1033,9 @@
                 itemCard.innerHTML = `
                     <div class="relative">
                         <img src="${item.image_url || 'https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=Prato'}" 
-                             alt="${item.name}" 
-                             class="w-full h-48 md:h-52 object-cover"
-                             onerror="this.src='https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=' + encodeURIComponent('Prato')}">
+                            alt="${item.name}" 
+                            class="w-full h-48 md:h-52 object-cover"
+                            onerror="this.src='https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=' + encodeURIComponent('Prato')}">
                         <div class="absolute top-4 right-4">
                             <span class="premium-badge text-xs">${item.protein || 'Destaque'}</span>
                         </div>
