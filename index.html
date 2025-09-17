@@ -1,1067 +1,1364 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rhelyi's Mustache - Cardápio Digital</title>
-    <meta name="description" content="Alimentação fitness e saudável com entrega. Refeições balanceadas para quem treina, quer emagrecer e busca praticidade.">
-    <meta name="keywords" content="alimentação fitness, comida saudável, delivery, refeições balanceadas, academia, emagrecimento">
-    
+    <meta
+      name="description"
+      content="Alimentação fitness e saudável com entrega. Refeições balanceadas para quem treina, quer emagrecer e busca praticidade."
+    />
+    <meta
+      name="keywords"
+      content="alimentação fitness, comida saudável, delivery, refeições balanceadas, academia, emagrecimento"
+    />
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="">
-    <meta property="og:title" content="Rhelyi's Mustache - Cardápio Digital">
-    <meta property="og:description" content="Alimentação fitness e saudável com entrega. Refeições balanceadas para quem treina, quer emagrecer e busca praticidade.">
-    <meta property="og:image" content="">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:title" content="Rhelyi's Mustache - Cardápio Digital" />
+    <meta
+      property="og:description"
+      content="Alimentação fitness e saudável com entrega. Refeições balanceadas para quem treina, quer emagrecer e busca praticidade."
+    />
+    <meta property="og:image" content="" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="">
-    <meta property="twitter:title" content="Rhelyi's Mustache - Cardápio Digital">
-    <meta property="twitter:description" content="Alimentação fitness e saudável com entrega. Refeições balanceadas para quem treina, quer emagrecer e busca praticidade.">
-    <meta property="twitter:image" content="">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="" />
+    <meta
+      property="twitter:title"
+      content="Rhelyi's Mustache - Cardápio Digital"
+    />
+    <meta
+      property="twitter:description"
+      content="Alimentação fitness e saudável com entrega. Refeições balanceadas para quem treina, quer emagrecer e busca praticidade."
+    />
+    <meta property="twitter:image" content="" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'mustache-purple': '#8B5CF6',
-                        'mustache-purple-dark': '#7C3AED',
-                        'mustache-purple-light': '#A78BFA',
-                        'mustache-yellow': '#F59E0B',
-                        'mustache-orange': '#FB923C',
-                        'mustache-red': '#EF4444',
-                        'mustache-red-bright': '#F87171',
-                        'mustache-black': '#1F2937',
-                        'mustache-green': '#10B981',
-                        'neon-purple': '#C084FC',
-                        'neon-yellow': '#FDE047'
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'bounce-slow': 'bounce 2s infinite',
-                        'fade-in': 'fadeIn 0.5s ease-in-out',
-                        'slide-up': 'slideUp 0.5s ease-out',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'neon-pulse': 'neonPulse 1.5s ease-in-out infinite alternate'
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
-                        },
-                        glow: {
-                            '0%': { 
-                                boxShadow: '0 0 5px #8B5CF6, 0 0 10px #8B5CF6, 0 0 15px #8B5CF6'
-                            },
-                            '100%': { 
-                                boxShadow: '0 0 10px #8B5CF6, 0 0 20px #8B5CF6, 0 0 30px #8B5CF6'
-                            }
-                        },
-                        neonPulse: {
-                            '0%': { 
-                                textShadow: '0 0 5px #F59E0B, 0 0 10px #F59E0B, 0 0 15px #F59E0B'
-                            },
-                            '100%': { 
-                                textShadow: '0 0 10px #F59E0B, 0 0 20px #F59E0B, 0 0 30px #F59E0B'
-                            }
-                        }
-                    },
-                    boxShadow: {
-                        'neon': '0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor',
-                        'neon-lg': '0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor',
-                        'card-glow': '0 4px 20px rgba(139, 92, 246, 0.3), 0 0 0 1px rgba(139, 92, 246, 0.1)'
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "mustache-purple": "#8B5CF6",
+              "mustache-purple-dark": "#7C3AED",
+              "mustache-purple-light": "#A78BFA",
+              "mustache-yellow": "#F59E0B",
+              "mustache-orange": "#FB923C",
+              "mustache-red": "#EF4444",
+              "mustache-red-bright": "#F87171",
+              "mustache-black": "#1F2937",
+              "mustache-green": "#10B981",
+              "neon-purple": "#C084FC",
+              "neon-yellow": "#FDE047",
+            },
+            animation: {
+              "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              "bounce-slow": "bounce 2s infinite",
+              "fade-in": "fadeIn 0.5s ease-in-out",
+              "slide-up": "slideUp 0.5s ease-out",
+              glow: "glow 2s ease-in-out infinite alternate",
+              "neon-pulse": "neonPulse 1.5s ease-in-out infinite alternate",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(20px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              glow: {
+                "0%": {
+                  boxShadow:
+                    "0 0 5px #8B5CF6, 0 0 10px #8B5CF6, 0 0 15px #8B5CF6",
+                },
+                "100%": {
+                  boxShadow:
+                    "0 0 10px #8B5CF6, 0 0 20px #8B5CF6, 0 0 30px #8B5CF6",
+                },
+              },
+              neonPulse: {
+                "0%": {
+                  textShadow:
+                    "0 0 5px #F59E0B, 0 0 10px #F59E0B, 0 0 15px #F59E0B",
+                },
+                "100%": {
+                  textShadow:
+                    "0 0 10px #F59E0B, 0 0 20px #F59E0B, 0 0 30px #F59E0B",
+                },
+              },
+            },
+            boxShadow: {
+              neon: "0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor",
+              "neon-lg":
+                "0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor",
+              "card-glow":
+                "0 4px 20px rgba(139, 92, 246, 0.3), 0 0 0 1px rgba(139, 92, 246, 0.1)",
+            },
+          },
+        },
+      };
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #1F2937 0%, #8B5CF6 50%, #1F2937 100%);
-        }
-        
-        .gradient-bg-enhanced {
-            background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 25%, #7C3AED 50%, #1E1B4B 75%, #0F172A 100%);
-        }
-        
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.4), 
-                        0 0 0 1px rgba(139, 92, 246, 0.3),
-                        0 0 20px rgba(139, 92, 246, 0.2);
-        }
-        
-        .mustache-icon {
-            font-size: 1.5rem;
-            color: #8B5CF6;
-        }
-        
-        .pulse-premium {
-            animation: pulsePremium 2s infinite;
-        }
-        
-        @keyframes pulsePremium {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(139, 92, 246, 0);
-            }
-        }
-        
-        .fitness-badge {
-            background: linear-gradient(45deg, #F59E0B, #EF4444);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 25px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .premium-badge {
-            background: linear-gradient(45deg, #8B5CF6, #1F2937);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 25px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
-        .loading-spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #8B5CF6;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+      }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+      .gradient-bg {
+        background: linear-gradient(
+          135deg,
+          #1f2937 0%,
+          #8b5cf6 50%,
+          #1f2937 100%
+        );
+      }
 
-        .price-highlight {
-            background: linear-gradient(45deg, #10B981, #059669);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 800;
-            font-size: 1.5rem;
-            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
-        }
+      .gradient-bg-enhanced {
+        background: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e1b4b 25%,
+          #7c3aed 50%,
+          #1e1b4b 75%,
+          #0f172a 100%
+        );
+      }
 
-        .category-active {
-            background: linear-gradient(45deg, #8B5CF6, #A855F7) !important;
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.3) !important;
-        }
+      .card-hover {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-        .menu-item-card {
-            background: linear-gradient(145deg, #1F2937, #374151);
-            border: 2px solid rgba(139, 92, 246, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
+      .card-hover:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.4),
+          0 0 0 1px rgba(139, 92, 246, 0.3), 0 0 20px rgba(139, 92, 246, 0.2);
+      }
 
-        .menu-item-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
-            transition: left 0.5s;
-        }
+      .mustache-icon {
+        font-size: 1.5rem;
+        color: #8b5cf6;
+      }
 
-        .menu-item-card:hover::before {
-            left: 100%;
-        }
+      .pulse-premium {
+        animation: pulsePremium 2s infinite;
+      }
 
-        .menu-item-card:hover {
-            border-color: rgba(139, 92, 246, 0.6);
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+      @keyframes pulsePremium {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
         }
-
-        .whatsapp-btn {
-            background: linear-gradient(45deg, #25D366, #128C7E);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        70% {
+          box-shadow: 0 0 0 15px rgba(139, 92, 246, 0);
         }
+      }
 
-        .whatsapp-btn:hover {
-            background: linear-gradient(45deg, #128C7E, #075E54);
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      .fitness-badge {
+        background: linear-gradient(45deg, #f59e0b, #ef4444);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 25px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .premium-badge {
+        background: linear-gradient(45deg, #8b5cf6, #1f2937);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 25px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .loading-spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #8b5cf6;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
         }
-
-        .error-message {
-            background: linear-gradient(45deg, #EF4444, #DC2626);
-            color: white;
-            padding: 16px;
-            border-radius: 12px;
-            margin: 20px 0;
-            text-align: center;
-            font-weight: bold;
+        100% {
+          transform: rotate(360deg);
         }
+      }
 
-        .success-message {
-            background: linear-gradient(45deg, #10B981, #059669);
-            color: white;
-            padding: 16px;
-            border-radius: 12px;
-            margin: 20px 0;
-            text-align: center;
-            font-weight: bold;
-        }
+      .price-highlight {
+        background: linear-gradient(45deg, #10b981, #059669);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        font-size: 1.5rem;
+        text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+      }
 
+      .category-active {
+        background: linear-gradient(45deg, #8b5cf6, #a855f7) !important;
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+      }
+
+      .menu-item-card {
+        background: linear-gradient(145deg, #1f2937, #374151);
+        border: 2px solid rgba(139, 92, 246, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .menu-item-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(139, 92, 246, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .menu-item-card:hover::before {
+        left: 100%;
+      }
+
+      .menu-item-card:hover {
+        border-color: rgba(139, 92, 246, 0.6);
+        box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+      }
+
+      .whatsapp-btn {
+        background: linear-gradient(45deg, #25d366, #128c7e);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      }
+
+      .whatsapp-btn:hover {
+        background: linear-gradient(45deg, #128c7e, #075e54);
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      }
+
+      .error-message {
+        background: linear-gradient(45deg, #ef4444, #dc2626);
+        color: white;
+        padding: 16px;
+        border-radius: 12px;
+        margin: 20px 0;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .success-message {
+        background: linear-gradient(45deg, #10b981, #059669);
+        color: white;
+        padding: 16px;
+        border-radius: 12px;
+        margin: 20px 0;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .brand-title {
+        font-weight: 900;
+        font-size: 2rem;
+        background: linear-gradient(45deg, #f59e0b, #ef4444, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+        animation: neon-pulse 2s ease-in-out infinite alternate;
+      }
+
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
         .brand-title {
-            font-weight: 900;
-            font-size: 2rem;
-            background: linear-gradient(45deg, #F59E0B, #EF4444, #8B5CF6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
-            animation: neon-pulse 2s ease-in-out infinite alternate;
+          font-size: 1.5rem;
+        }
+      }
+
+      .brand-subtitle {
+        color: #f59e0b;
+        font-weight: 600;
+        text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+      }
+
+      .hero-section {
+        background: linear-gradient(
+          135deg,
+          #8b5cf6 0%,
+          #ef4444 50%,
+          #f59e0b 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 30% 50%,
+            rgba(139, 92, 246, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 50%,
+            rgba(239, 68, 68, 0.3) 0%,
+            transparent 50%
+          );
+        animation: glow 3s ease-in-out infinite alternate;
+      }
+
+      .category-btn {
+        position: relative;
+        overflow: hidden;
+        font-weight: 600;
+        border: 2px solid rgba(139, 92, 246, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .category-btn:hover {
+        border-color: rgba(139, 92, 246, 0.6);
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+      }
+
+      .add-btn {
+        background: linear-gradient(45deg, #f59e0b, #fb923c);
+        font-weight: 700;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .add-btn:hover {
+        background: linear-gradient(45deg, #fb923c, #f59e0b);
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+      }
+
+      /* Mobile-optimized cart button */
+      .cart-btn {
+        background: linear-gradient(45deg, #f59e0b, #fb923c);
+        font-weight: 700;
+        box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        animation: glow 2s ease-in-out infinite alternate;
+        position: relative;
+        z-index: 10;
+      }
+
+      .cart-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+      }
+
+      #logoImage{
+        cursor: pointer;
+      }
+
+      /* Mobile header adjustments */
+      @media (max-width: 768px) {
+        .mobile-header {
+          flex-direction: column;
+          gap: 1rem;
         }
 
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .brand-title {
-                font-size: 1.5rem;
-            }
+        .mobile-header .logo-section {
+          align-self: center;
         }
 
-        .brand-subtitle {
-            color: #F59E0B;
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+        .mobile-header .cart-section {
+          align-self: center;
+
+          max-width: 200px;
         }
 
-        .hero-section {
-            background: linear-gradient(135deg, #8B5CF6 0%, #EF4444 50%, #F59E0B 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(239, 68, 68, 0.3) 0%, transparent 50%);
-            animation: glow 3s ease-in-out infinite alternate;
-        }
-
-        .category-btn {
-            position: relative;
-            overflow: hidden;
-            font-weight: 600;
-            border: 2px solid rgba(139, 92, 246, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .category-btn:hover {
-            border-color: rgba(139, 92, 246, 0.6);
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-        }
-
-        .add-btn {
-            background: linear-gradient(45deg, #F59E0B, #FB923C);
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .add-btn:hover {
-            background: linear-gradient(45deg, #FB923C, #F59E0B);
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
-        }
-
-        /* Mobile-optimized cart button */
         .cart-btn {
-            background: linear-gradient(45deg, #F59E0B, #FB923C);
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            animation: glow 2s ease-in-out infinite alternate;
-            position: relative;
-            z-index: 10;
+          width: 100%;
+          justify-content: center;
+          padding: 0.75rem 1.5rem;
+          font-size: 1rem;
         }
+      }
 
-        .cart-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
-        }
+      .combo-section {
+        background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+        position: relative;
+        overflow: hidden;
+      }
 
-        /* Mobile header adjustments */
-        @media (max-width: 768px) {
-            .mobile-header {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .mobile-header .logo-section {
-                align-self: center;
-            }
-            
-            .mobile-header .cart-section {
-                align-self: center;
-                
-                max-width: 200px;
-            }
-            
-            .cart-btn {
-                width: 100%;
-                justify-content: center;
-                padding: 0.75rem 1.5rem;
-                font-size: 1rem;
-            }
-        }
+      .combo-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+      }
 
-        .combo-section {
-            background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
-            position: relative;
-            overflow: hidden;
-        }
+      .modal-backdrop {
+        backdrop-filter: blur(8px);
+        background: rgba(0, 0, 0, 0.7);
+      }
 
-        .combo-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-        }
+      /* Mobile-optimized modal */
+      .modal-content {
+        background: linear-gradient(145deg, #1f2937, #374151);
+        border: 2px solid rgba(139, 92, 246, 0.3);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+          0 0 0 1px rgba(139, 92, 246, 0.1);
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+      }
 
-        .modal-backdrop {
-            backdrop-filter: blur(8px);
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        /* Mobile-optimized modal */
+      @media (max-width: 768px) {
         .modal-content {
-            background: linear-gradient(145deg, #1F2937, #374151);
-            border: 2px solid rgba(139, 92, 246, 0.3);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
-                        0 0 0 1px rgba(139, 92, 246, 0.1);
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
+          margin: 1rem;
+          max-height: 95vh;
+          width: calc(100% - 2rem);
         }
+      }
 
-        @media (max-width: 768px) {
-            .modal-content {
-                margin: 1rem;
-                max-height: 95vh;
-                width: calc(100% - 2rem);
-            }
-        }
+      /* Scrollable cart items section */
+      .cart-items-scroll {
+        max-height: 40vh;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #8b5cf6 #374151;
+      }
 
-        /* Scrollable cart items section */
+      .cart-items-scroll::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .cart-items-scroll::-webkit-scrollbar-track {
+        background: #374151;
+        border-radius: 3px;
+      }
+
+      .cart-items-scroll::-webkit-scrollbar-thumb {
+        background: #8b5cf6;
+        border-radius: 3px;
+      }
+
+      .cart-items-scroll::-webkit-scrollbar-thumb:hover {
+        background: #a855f7;
+      }
+
+      @media (max-width: 768px) {
         .cart-items-scroll {
-            max-height: 40vh;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: #8B5CF6 #374151;
+          max-height: 30vh;
         }
+      }
 
-        .cart-items-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
+      .input-field {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(139, 92, 246, 0.3);
+        color: white;
+        transition: all 0.3s ease;
+      }
 
-        .cart-items-scroll::-webkit-scrollbar-track {
-            background: #374151;
-            border-radius: 3px;
-        }
+      .input-field:focus {
+        border-color: #8b5cf6;
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        background: rgba(255, 255, 255, 0.15);
+      }
 
-        .cart-items-scroll::-webkit-scrollbar-thumb {
-            background: #8B5CF6;
-            border-radius: 3px;
-        }
+      .input-field::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
 
-        .cart-items-scroll::-webkit-scrollbar-thumb:hover {
-            background: #A855F7;
-        }
+      /* Logo size adjustments */
+      .logo-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #8b5cf6;
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        animation: glow 2s ease-in-out infinite alternate;
+      }
 
-        @media (max-width: 768px) {
-            .cart-items-scroll {
-                max-height: 30vh;
-            }
-        }
-
-        .input-field {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(139, 92, 246, 0.3);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .input-field:focus {
-            border-color: #8B5CF6;
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .input-field::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Logo size adjustments */
+      @media (max-width: 768px) {
         .logo-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #8B5CF6;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
+          width: 60px;
+          height: 60px;
         }
+      }
 
-        @media (max-width: 768px) {
-            .logo-image {
-                width: 60px;
-                height: 60px;
-            }
+      /* Custom Select Styles */
+      .custom-select-container {
+        position: relative;
+      }
+
+      .custom-select {
+        background: linear-gradient(145deg, #1f2937, #374151);
+        border: 2px solid rgba(139, 92, 246, 0.3);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .custom-select::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(139, 92, 246, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .custom-select:hover::before {
+        left: 100%;
+      }
+
+      .custom-select:hover {
+        border-color: rgba(139, 92, 246, 0.6);
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .custom-select.active {
+        border-color: #8b5cf6;
+        box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+      }
+
+      .custom-select.active #selectArrow {
+        transform: rotate(180deg);
+      }
+
+      .custom-select-dropdown {
+        background: linear-gradient(145deg, #1f2937, #374151);
+        border: 2px solid rgba(139, 92, 246, 0.3);
+        backdrop-filter: blur(10px);
+        animation: slideDown 0.3s ease-out;
+      }
+
+      .custom-select-dropdown.show {
+        display: block !important;
+        animation: slideDown 0.3s ease-out;
+      }
+
+      .custom-select-option {
+        padding: 12px 20px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .custom-select-option:last-child {
+        border-bottom: none;
+      }
+
+      .custom-select-option::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(139, 92, 246, 0.1),
+          transparent
+        );
+        transition: left 0.3s;
+      }
+
+      .custom-select-option:hover::before {
+        left: 100%;
+      }
+
+      .custom-select-option:hover {
+        background: rgba(139, 92, 246, 0.2);
+        color: #a78bfa;
+        transform: translateX(5px);
+      }
+
+      .custom-select-option.selected {
+        background: linear-gradient(45deg, #8b5cf6, #a855f7);
+        color: white;
+        font-weight: 600;
+      }
+
+      .custom-select-option.selected::after {
+        content: "✓";
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-weight: bold;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
         }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-        /* Custom Select Styles */
+      /* Scrollbar personalizada para o dropdown */
+      .custom-select-dropdown::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .custom-select-dropdown::-webkit-scrollbar-track {
+        background: #374151;
+        border-radius: 3px;
+      }
+
+      .custom-select-dropdown::-webkit-scrollbar-thumb {
+        background: #8b5cf6;
+        border-radius: 3px;
+      }
+
+      .custom-select-dropdown::-webkit-scrollbar-thumb:hover {
+        background: #a855f7;
+      }
+
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
         .custom-select-container {
-            position: relative;
+          max-width: 100%;
         }
 
         .custom-select {
-            background: linear-gradient(145deg, #1F2937, #374151);
-            border: 2px solid rgba(139, 92, 246, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .custom-select::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .custom-select:hover::before {
-            left: 100%;
-        }
-
-        .custom-select:hover {
-            border-color: rgba(139, 92, 246, 0.6);
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .custom-select.active {
-            border-color: #8B5CF6;
-            box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
-        }
-
-        .custom-select.active #selectArrow {
-            transform: rotate(180deg);
-        }
-
-        .custom-select-dropdown {
-            background: linear-gradient(145deg, #1F2937, #374151);
-            border: 2px solid rgba(139, 92, 246, 0.3);
-            backdrop-filter: blur(10px);
-            animation: slideDown 0.3s ease-out;
-        }
-
-        .custom-select-dropdown.show {
-            display: block !important;
-            animation: slideDown 0.3s ease-out;
+          padding: 12px 16px;
         }
 
         .custom-select-option {
-            padding: 12px 20px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
-            position: relative;
-            overflow: hidden;
+          padding: 14px 16px;
+          font-size: 14px;
         }
-
-        .custom-select-option:last-child {
-            border-bottom: none;
-        }
-
-        .custom-select-option::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
-            transition: left 0.3s;
-        }
-
-        .custom-select-option:hover::before {
-            left: 100%;
-        }
-
-        .custom-select-option:hover {
-            background: rgba(139, 92, 246, 0.2);
-            color: #A78BFA;
-            transform: translateX(5px);
-        }
-
-        .custom-select-option.selected {
-            background: linear-gradient(45deg, #8B5CF6, #A855F7);
-            color: white;
-            font-weight: 600;
-        }
-
-        .custom-select-option.selected::after {
-            content: '✓';
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            font-weight: bold;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Scrollbar personalizada para o dropdown */
-        .custom-select-dropdown::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .custom-select-dropdown::-webkit-scrollbar-track {
-            background: #374151;
-            border-radius: 3px;
-        }
-
-        .custom-select-dropdown::-webkit-scrollbar-thumb {
-            background: #8B5CF6;
-            border-radius: 3px;
-        }
-
-        .custom-select-dropdown::-webkit-scrollbar-thumb:hover {
-            background: #A855F7;
-        }
-
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .custom-select-container {
-                max-width: 100%;
-            }
-            
-            .custom-select {
-                padding: 12px 16px;
-            }
-            
-            .custom-select-option {
-                padding: 14px 16px;
-                font-size: 14px;
-            }
-        }
+      }
     </style>
-</head>
-<body class="bg-black min-h-screen">
+  </head>
+  <body class="bg-black min-h-screen">
     <!-- Header Premium - Mobile Optimized -->
     <header class="gradient-bg-enhanced shadow-2xl sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4">
-            <div class="flex gap-4 flex-row items-center justify-between mobile-header">
-                <div class="flex items-center gap-4 logo-section">
-                    <!-- Logo será carregado dinamicamente do Google Sheets -->
-                    <img id="logoImage" src="https://via.placeholder.com/80x80/8B5CF6/FFFFFF?text=LOGO" alt="Rhelyi's Mustache Logo" class="logo-image">
-                    
-                    <div>
-                        <h1 class="hidden brand-title sm:block">Rhelyi's Mustache</h1>
-                        <p class="hidden brand-subtitle text-sm sm:block md:text-base">Alimentação Fitness & Saudável</p>
-                        <div class="flex gap-2 mt-2 flex-wrap">
-                            <span class="hidden fitness-badge text-xs sm:block">💪 FITNESS</span>
-                            <span class="hidden fitness-badge text-xs sm:block">🥗 SAUDÁVEL</span>
-                            <span class="hidden fitness-badge text-xs sm:block">🚚 DELIVERY</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="cart-section">
-                    <button id="cartBtn" class="cart-btn relative text-mustache-black px-4 py-3 rounded-full transition-all font-bold shadow-lg">
-                        <span class="flex items-center gap-2">
-                            🛒 Carrinho
-                            <span id="cartCount" class="bg-mustache-red text-white rounded-full px-2 py-1 text-xs min-w-[24px] h-6 flex items-center justify-center font-bold">0</span>
-                        </span>
-                    </button>
-                </div>
+      <div class="max-w-6xl mx-auto px-4 py-4">
+        <div
+          class="flex gap-4 flex-row items-center justify-between mobile-header"
+        >
+          <div class="flex items-center gap-4 logo-section">
+            <!-- Logo será carregado dinamicamente do Google Sheets -->
+            <img
+              id="logoImage"
+              src="https://via.placeholder.com/80x80/8B5CF6/FFFFFF?text=LOGO"
+              alt="Rhelyi's Mustache Logo"
+              class="logo-image"
+            />
+
+            <div>
+              <h1 class="hidden brand-title sm:block">Rhelyi's Mustache</h1>
+              <p class="hidden brand-subtitle text-sm sm:block md:text-base">
+                Alimentação Fitness & Saudável
+              </p>
+              <div class="flex gap-2 mt-2 flex-wrap">
+                <span class="hidden fitness-badge text-xs sm:block"
+                  >💪 FITNESS</span
+                >
+                <span class="hidden fitness-badge text-xs sm:block"
+                  >🥗 SAUDÁVEL</span
+                >
+                <span class="hidden fitness-badge text-xs sm:block"
+                  >🚚 DELIVERY</span
+                >
+              </div>
             </div>
+          </div>
+          <div class="cart-section">
+            <button
+              id="cartBtn"
+              class="cart-btn relative text-mustache-black px-4 py-3 rounded-full transition-all font-bold shadow-lg"
+            >
+              <span class="flex items-center gap-2">
+                🛒 Carrinho
+                <span
+                  id="cartCount"
+                  class="bg-mustache-red text-white rounded-full px-2 py-1 text-xs min-w-[24px] h-6 flex items-center justify-center font-bold"
+                  >0</span
+                >
+              </span>
+            </button>
+          </div>
         </div>
+      </div>
     </header>
 
     <div class="max-w-6xl mx-auto px-4 py-8">
-        <!-- Loading State -->
-        <div id="loadingState" class="text-center py-12">
-            <div class="loading-spinner"></div>
-            <p class="text-white text-lg mt-4">Carregando cardápio delicioso...</p>
+      <!-- Loading State -->
+      <div id="loadingState" class="text-center py-12">
+        <div class="loading-spinner"></div>
+        <p class="text-white text-lg mt-4">Carregando cardápio delicioso...</p>
+      </div>
+
+      <!-- Error State -->
+      <div id="errorState" class="hidden">
+        <div class="error-message">
+          <h3 class="text-xl font-bold mb-2">Ops! Algo deu errado</h3>
+          <p>
+            Não foi possível carregar o cardápio. Tente novamente em alguns
+            instantes.
+          </p>
+          <button
+            onclick="loadMenuData()"
+            class="mt-4 bg-white text-red-600 px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition-all"
+          >
+            Tentar Novamente
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div id="mainContent" class="hidden">
+        <!-- Destaque Fitness -->
+        <div
+          class="hero-section text-white rounded-3xl p-6 md:p-8 mb-8 shadow-2xl animate-fade-in relative z-10"
+        >
+          <div class="text-center relative z-10">
+            <h2 class="text-2xl md:text-3xl font-black mb-3">
+              💪 Alimentação Inteligente para Seus Objetivos
+            </h2>
+            <p class="text-lg md:text-xl opacity-95 font-medium">
+              Refeições balanceadas para quem treina, quer emagrecer e busca
+              praticidade
+            </p>
+            <div
+              class="mt-6 flex justify-center gap-2 text-sm flex-wrap"
+            >
+              <span
+                class="px-2 font-semibold border-opacity-30"
+                > 🏋️ Academia  </span
+              >
+              <span
+                class="px-2 font-semibold border-opacity-30"
+                > ⚖️ Emagrecimento </span
+              >
+              <span
+                class="px-2 font-semibold border-opacity-30"
+                > ⏰ Praticidade </span
+              >
+              <span
+                class="px-2 font-semibold border-opacity-30"
+                > 🌱 Vegetariano </span
+              >
+            </div>
+          </div>
         </div>
 
-        <!-- Error State -->
-        <div id="errorState" class="hidden">
-            <div class="error-message">
-                <h3 class="text-xl font-bold mb-2">Ops! Algo deu errado</h3>
-                <p>Não foi possível carregar o cardápio. Tente novamente em alguns instantes.</p>
-                <button onclick="loadMenuData()" class="mt-4 bg-white text-red-600 px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition-all">
-                    Tentar Novamente
-                </button>
+        <!-- Categorias -->
+        <div class="mb-8">
+          <div class="flex justify-center">
+            <div class="custom-select-container relative w-full max-w-md">
+              <div
+                id="categorySelect"
+                class="custom-select bg-gray-800 border-2 border-mustache-purple rounded-full px-6 py-4 cursor-pointer transition-all duration-300 hover:border-purple-400 hover:shadow-lg"
+              >
+                <div class="flex items-center justify-between">
+                  <span id="selectedCategory" class="text-white font-semibold"
+                    >Todos os Pratos</span
+                  >
+                  <svg
+                    id="selectArrow"
+                    class="w-5 h-5 text-mustache-purple transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div
+                id="selectDropdown"
+                class="custom-select-dropdown absolute top-full left-0 right-0 mt-2 bg-gray-800 border-2 border-mustache-purple rounded-2xl shadow-2xl z-50 hidden overflow-hidden"
+              >
+                <div
+                  class="max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-mustache-purple scrollbar-track-gray-700"
+                >
+                  <!-- Opções serão inseridas dinamicamente -->
+                </div>
+              </div>
             </div>
+          </div>
         </div>
 
-        <!-- Main Content -->
-        <div id="mainContent" class="hidden">
-            <!-- Destaque Fitness -->
-            <div class="hero-section text-white rounded-3xl p-6 md:p-8 mb-8 shadow-2xl animate-fade-in relative z-10">
-                <div class="text-center relative z-10">
-                    <h2 class="text-2xl md:text-3xl font-black mb-3">💪 Alimentação Inteligente para Seus Objetivos</h2>
-                    <p class="text-lg md:text-xl opacity-95 font-medium">Refeições balanceadas para quem treina, quer emagrecer e busca praticidade</p>
-                    <div class="mt-6 flex justify-center gap-2 md:gap-4 text-sm flex-wrap">
-                        <span class="bg-white bg-opacity-25 px-3 md:px-4 py-2 rounded-full font-semibold border border-white border-opacity-30">🏋️ Academia</span>
-                        <span class="bg-white bg-opacity-25 px-3 md:px-4 py-2 rounded-full font-semibold border border-white border-opacity-30">⚖️ Emagrecimento</span>
-                        <span class="bg-white bg-opacity-25 px-3 md:px-4 py-2 rounded-full font-semibold border border-white border-opacity-30">⏰ Praticidade</span>
-                        <span class="bg-white bg-opacity-25 px-3 md:px-4 py-2 rounded-full font-semibold border border-white border-opacity-30">🌱 Vegetariano</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Categorias -->
-            <div class="mb-8">
-                <div class="flex justify-center">
-                    <div class="custom-select-container relative w-full max-w-md">
-                        <div id="categorySelect" class="custom-select bg-gray-800 border-2 border-mustache-purple rounded-full px-6 py-4 cursor-pointer transition-all duration-300 hover:border-purple-400 hover:shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <span id="selectedCategory" class="text-white font-semibold">Todos os Pratos</span>
-                                <svg id="selectArrow" class="w-5 h-5 text-mustache-purple transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div id="selectDropdown" class="custom-select-dropdown absolute top-full left-0 right-0 mt-2 bg-gray-800 border-2 border-mustache-purple rounded-2xl shadow-2xl z-50 hidden overflow-hidden">
-                            <div class="max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-mustache-purple scrollbar-track-gray-700">
-                                <!-- Opções serão inseridas dinamicamente -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Menu Items -->
-            <div id="menuItems" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <!-- Items serão inseridos aqui pelo JavaScript -->
-            </div>
-
-            <!-- Seção de Combos Personalizados -->
-            <div class="mt-16 combo-section text-white rounded-3xl p-6 md:p-10 shadow-2xl animate-slide-up relative">
-                <div class="text-center relative z-10">
-                    <h3 class="text-2xl md:text-3xl font-black mb-4">🎯 Combos Personalizados</h3>
-                    <p class="text-lg md:text-xl mb-8 font-medium">Planos semanais e mensais sob medida para seus objetivos!</p>
-                    <div class="grid md:grid-cols-2 gap-6 md:gap-8">
-                        <div class="bg-white bg-opacity-20 rounded-2xl p-6 border border-white border-opacity-30">
-                            <h4 class="font-black text-lg md:text-xl mb-3">📅 Combo Semanal</h4>
-                        </div>
-                        <div class="bg-white bg-opacity-20 rounded-2xl p-6 border border-white border-opacity-30">
-                            <h4 class="font-black text-lg md:text-xl mb-3">📆 Combo Mensal</h4>
-                        </div>
-                    </div>
-                    <button onclick="openComboWhatsApp()" class="mt-8 bg-white text-mustache-red px-8 md:px-10 py-3 md:py-4 rounded-full font-black hover:bg-gray-100 transition-all shadow-lg text-base md:text-lg">
-                        💬 Solicitar Combo Personalizado
-                    </button>
-                </div>
-            </div>
+        <!-- Menu Items -->
+        <div
+          id="menuItems"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        >
+          <!-- Items serão inseridos aqui pelo JavaScript -->
         </div>
+
+        <!-- Seção de Combos Personalizados -->
+        <div
+          class="mt-16 combo-section text-white rounded-3xl p-6 md:p-10 shadow-2xl animate-slide-up relative"
+        >
+          <div class="text-center relative z-10">
+            <h3 class="text-2xl md:text-3xl font-black mb-4">
+              🎯 Combos Personalizados
+            </h3>
+            <p class="text-lg md:text-xl mb-8 font-medium">
+              Planos semanais e mensais sob medida para seus objetivos!
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+              <div
+                class="bg-white bg-opacity-20 rounded-2xl p-6 border border-white border-opacity-30"
+              >
+                <h4 class="font-black text-lg md:text-xl mb-3">
+                  📅 Combo Semanal
+                </h4>
+              </div>
+              <div
+                class="bg-white bg-opacity-20 rounded-2xl p-6 border border-white border-opacity-30"
+              >
+                <h4 class="font-black text-lg md:text-xl mb-3">
+                  📆 Combo Mensal
+                </h4>
+              </div>
+            </div>
+            <button
+              onclick="openComboWhatsApp()"
+              class="mt-8 bg-white text-mustache-red px-8 md:px-10 py-3 md:py-4 rounded-full font-black hover:bg-gray-100 transition-all shadow-lg text-base md:text-lg"
+            >
+              💬 Solicitar Combo Personalizado
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Modal do Carrinho - Mobile Optimized -->
     <div id="cartModal" class="fixed inset-0 modal-backdrop z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="modal-content rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden">
-                <div class="gradient-bg-enhanced p-6 text-white flex-shrink-0">
-                    <div class="flex justify-between items-center">
-                        <h2 class="text-xl md:text-2xl font-black">🛒 Seu Pedido Fitness</h2>
-                        <button id="closeCart" class="text-white hover:text-gray-300 text-3xl font-bold">&times;</button>
-                    </div>
-                </div>
-                
-                <!-- Scrollable cart items section -->
-                <div id="cartItems" class="cart-items-scroll p-6 flex-grow">
-                    <!-- Items do carrinho aqui -->
-                </div>
-                
-                <!-- Fixed bottom section with form and total -->
-                <div class="p-6 border-t bg-gray-800 border-mustache-purple flex-shrink-0">
-                    <div class="mb-4">
-                        <label class="block text-sm font-bold text-white mb-2">👤 Nome:</label>
-                        <input type="text" id="customerName" class="input-field w-full px-4 py-3 rounded-lg focus:outline-none text-sm" placeholder="Seu nome completo">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label class="block text-sm font-bold text-white mb-2">📍 Endereço de entrega:</label>
-                        <textarea id="customerAddress" class="input-field w-full px-4 py-3 rounded-lg focus:outline-none text-sm" rows="3" placeholder="Rua, número, bairro, cidade..."></textarea>
-                    </div>
-                    
-
-                    
-                    <div class="flex justify-between items-center mb-6 p-4 bg-mustache-purple text-white rounded-lg">
-                        <span class="text-lg md:text-xl font-black">Total: R$ <span id="cartTotal">0,00</span></span>
-                    </div>
-                    
-                    <button id="sendWhatsApp" class="w-full whatsapp-btn text-white py-4 rounded-lg font-black text-base md:text-lg shadow-lg">
-                        📱 Finalizar Pedido via WhatsApp
-                    </button>
-                </div>
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div
+          class="modal-content rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden"
+        >
+          <div class="gradient-bg-enhanced p-6 text-white flex-shrink-0">
+            <div class="flex justify-between items-center">
+              <h2 class="text-xl md:text-2xl font-black">
+                🛒 Seu Pedido Fitness
+              </h2>
+              <button
+                id="closeCart"
+                class="text-white hover:text-gray-300 text-3xl font-bold"
+              >
+                &times;
+              </button>
             </div>
+          </div>
+
+          <!-- Scrollable cart items section -->
+          <div id="cartItems" class="cart-items-scroll p-6 flex-grow">
+            <!-- Items do carrinho aqui -->
+          </div>
+
+          <!-- Fixed bottom section with form and total -->
+          <div
+            class="p-6 border-t bg-gray-800 border-mustache-purple flex-shrink-0"
+          >
+            <div class="mb-4">
+              <label class="block text-sm font-bold text-white mb-2"
+                >👤 Nome:</label
+              >
+              <input
+                type="text"
+                id="customerName"
+                class="input-field w-full px-4 py-3 rounded-lg focus:outline-none text-sm"
+                placeholder="Seu nome completo"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label class="block text-sm font-bold text-white mb-2"
+                >📍 Endereço de entrega:</label
+              >
+              <textarea
+                id="customerAddress"
+                class="input-field w-full px-4 py-3 rounded-lg focus:outline-none text-sm"
+                rows="3"
+                placeholder="Rua, número, bairro, cidade..."
+              ></textarea>
+            </div>
+
+            <div
+              class="flex justify-between items-center mb-6 p-4 bg-mustache-purple text-white rounded-lg"
+            >
+              <span class="text-lg md:text-xl font-black"
+                >Total: R$ <span id="cartTotal">0,00</span></span
+              >
+            </div>
+
+            <button
+              id="sendWhatsApp"
+              class="w-full whatsapp-btn text-white py-4 rounded-lg font-black text-base md:text-lg shadow-lg"
+            >
+              📱 Finalizar Pedido via WhatsApp
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Modal Monte sua Massa -->
     <div id="customPastaModal" class="fixed inset-0 modal-backdrop z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="modal-content rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden">
-                <div class="gradient-bg-enhanced p-6 text-white flex-shrink-0">
-                    <div class="flex justify-between items-center">
-                        <h2 class="text-xl md:text-2xl font-black">🍝 Monte sua Massa</h2>
-                        <button id="closeCustomPasta" class="text-white hover:text-gray-300 text-3xl font-bold">&times;</button>
-                    </div>
-                </div>
-                
-                <div class="p-6 overflow-y-scroll flex-grow">
-                    <div id="customPastaContent">
-                        <!-- Conteúdo será inserido dinamicamente -->
-                    </div>
-                </div>
-                
-                <div class="p-6 border-t bg-gray-800 border-mustache-purple flex-shrink-0">
-                    <div class="flex justify-between items-center mb-6 p-4 bg-mustache-purple text-white rounded-lg">
-                        <span class="text-lg md:text-xl font-black">Total: R$ <span id="customPastaTotal">0,00</span></span>
-                    </div>
-                    
-                    <button id="addCustomPastaToCart" class="w-full add-btn text-mustache-black py-4 rounded-lg font-black text-base md:text-lg shadow-lg">
-                        🍝 Adicionar Massa Personalizada ao Carrinho
-                    </button>
-                </div>
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div
+          class="modal-content rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden"
+        >
+          <div class="gradient-bg-enhanced p-6 text-white flex-shrink-0">
+            <div class="flex justify-between items-center">
+              <h2 class="text-xl md:text-2xl font-black">🍝 Monte sua Massa</h2>
+              <button
+                id="closeCustomPasta"
+                class="text-white hover:text-gray-300 text-3xl font-bold"
+              >
+                &times;
+              </button>
             </div>
+          </div>
+
+          <div class="p-6 overflow-y-scroll flex-grow">
+            <div id="customPastaContent">
+              <!-- Conteúdo será inserido dinamicamente -->
+            </div>
+          </div>
+
+          <div
+            class="p-6 border-t bg-gray-800 border-mustache-purple flex-shrink-0"
+          >
+            <div
+              class="flex justify-between items-center mb-6 p-4 bg-mustache-purple text-white rounded-lg"
+            >
+              <span class="text-lg md:text-xl font-black"
+                >Total: R$ <span id="customPastaTotal">0,00</span></span
+              >
+            </div>
+
+            <button
+              id="addCustomPastaToCart"
+              class="w-full add-btn text-mustache-black py-4 rounded-lg font-black text-base md:text-lg shadow-lg"
+            >
+              🍝 Adicionar Massa Personalizada ao Carrinho
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <script>
-        // 🔥 CONFIGURAÇÕES PRINCIPAIS - ALTERE AQUI
-        // URL do Google Sheets publicado como CSV
-        const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSH36sDrFXiW7FaWUgZl4BqlXmRde2hUr8LoB0ibudTR6ZPx-QT17ZvqkOhJEJ128LURxVvNI_W4H2L/pub?gid=0&single=true&output=csv";
-        
-        // Número padrão do WhatsApp (será sobrescrito pelos dados do Google Sheets se disponível)
-        let defaultWhatsAppNumber = "+5511978361049";
+      // 🔥 CONFIGURAÇÕES PRINCIPAIS - ALTERE AQUI
+      // URL do Google Sheets publicado como CSV
+      const GOOGLE_SHEETS_CSV_URL =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vSH36sDrFXiW7FaWUgZl4BqlXmRde2hUr8LoB0ibudTR6ZPx-QT17ZvqkOhJEJ128LURxVvNI_W4H2L/pub?gid=0&single=true&output=csv";
 
-        // Variáveis globais
-        let menuData = [];
-        let cart = [];
-        let currentCategory = 'all';
+      // Número padrão do WhatsApp (será sobrescrito pelos dados do Google Sheets se disponível)
+      let defaultWhatsAppNumber = "+5511978361049";
 
-        // Função para carregar dados do Google Sheets
-        async function loadMenuData() {
-            try {
-                document.getElementById('loadingState').classList.remove('hidden');
-                document.getElementById('errorState').classList.add('hidden');
-                document.getElementById('mainContent').classList.add('hidden');
+      // Variáveis globais
+      let menuData = [];
+      let cart = [];
+      let currentCategory = "all";
 
-                // Se não há URL configurado, usar dados de exemplo
-                if (GOOGLE_SHEETS_CSV_URL === "COLE_AQUI_O_URL_DO_SEU_GOOGLE_SHEETS") {
-                    console.log("Usando dados de exemplo - Configure o URL do Google Sheets");
-                    loadExampleData();
-                    return;
-                }
+      // Função para carregar dados do Google Sheets
+      async function loadMenuData() {
+        try {
+          document.getElementById("loadingState").classList.remove("hidden");
+          document.getElementById("errorState").classList.add("hidden");
+          document.getElementById("mainContent").classList.add("hidden");
 
-                const response = await fetch(GOOGLE_SHEETS_CSV_URL);
-                if (!response.ok) {
-                    throw new Error('Erro ao carregar dados');
-                }
+          // Se não há URL configurado, usar dados de exemplo
+          if (
+            GOOGLE_SHEETS_CSV_URL === "COLE_AQUI_O_URL_DO_SEU_GOOGLE_SHEETS"
+          ) {
+            console.log(
+              "Usando dados de exemplo - Configure o URL do Google Sheets"
+            );
+            loadExampleData();
+            return;
+          }
 
-                const csvText = await response.text();
-                const parsedData = parseCSV(csvText);
-                
-                if (parsedData.length === 0) {
-                    throw new Error('Nenhum dado encontrado');
-                }
+          const response = await fetch(GOOGLE_SHEETS_CSV_URL);
+          if (!response.ok) {
+            throw new Error("Erro ao carregar dados");
+          }
 
-                menuData = parsedData;
-                
-                // Atualizar número do WhatsApp se disponível nos dados
-                if (menuData.length > 0 && menuData[0].whatsapp_number) {
-                    defaultWhatsAppNumber = menuData[0].whatsapp_number;
-                }
+          const csvText = await response.text();
+          const parsedData = parseCSV(csvText);
 
-                // Carregar logo se disponível
-                if (menuData.length > 0 && menuData[0].logo_url) {
-                    document.getElementById('logoImage').src = menuData[0].logo_url;
-                }
+          if (parsedData.length === 0) {
+            throw new Error("Nenhum dado encontrado");
+          }
 
-                renderCategories();
-                renderMenuItems();
-                
-                document.getElementById('loadingState').classList.add('hidden');
-                document.getElementById('mainContent').classList.remove('hidden');
-                
-            } catch (error) {
-                console.error('Erro ao carregar dados:', error);
-                document.getElementById('loadingState').classList.add('hidden');
-                document.getElementById('errorState').classList.remove('hidden');
+          menuData = parsedData;
+
+          // Atualizar número do WhatsApp se disponível nos dados
+          if (menuData.length > 0 && menuData[0].whatsapp_number) {
+            defaultWhatsAppNumber = menuData[0].whatsapp_number;
+          }
+
+          // Carregar logo se disponível
+          if (menuData.length > 0 && menuData[0].logo_url) {
+            document.getElementById("logoImage").src = menuData[0].logo_url;
+          }
+
+          renderCategories();
+          renderMenuItems();
+
+          document.getElementById("loadingState").classList.add("hidden");
+          document.getElementById("mainContent").classList.remove("hidden");
+        } catch (error) {
+          console.error("Erro ao carregar dados:", error);
+          document.getElementById("loadingState").classList.add("hidden");
+          document.getElementById("errorState").classList.remove("hidden");
+        }
+      }
+
+      // Função para analisar CSV
+      function parseCSV(csvText) {
+        const lines = csvText.trim().split("\n");
+        const headers = lines[0]
+          .split(",")
+          .map((h) => h.trim().replace(/"/g, ""));
+        const data = [];
+
+        for (let i = 1; i < lines.length; i++) {
+          const values = lines[i]
+            .split(",")
+            .map((v) => v.trim().replace(/"/g, ""));
+          if (values.length === headers.length) {
+            const item = {};
+            headers.forEach((header, index) => {
+              item[header] = values[index];
+            });
+
+            // Converter price para número
+            if (item.price) {
+              item.price = parseFloat(item.price) || 0;
             }
-        }
 
-        // Função para analisar CSV
-        function parseCSV(csvText) {
-            const lines = csvText.trim().split('\n');
-            const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-            const data = [];
-
-            for (let i = 1; i < lines.length; i++) {
-                const values = lines[i].split(',').map(v => v.trim().replace(/"/g, ''));
-                if (values.length === headers.length) {
-                    const item = {};
-                    headers.forEach((header, index) => {
-                        item[header] = values[index];
-                    });
-                    
-                    // Converter price para número
-                    if (item.price) {
-                        item.price = parseFloat(item.price) || 0;
-                    }
-                    
-                    // Converter id para número
-                    if (item.id) {
-                        item.id = parseInt(item.id) || 0;
-                    }
-                    
-                    data.push(item);
-                }
+            // Converter id para número
+            if (item.id) {
+              item.id = parseInt(item.id) || 0;
             }
 
-            return data;
+            data.push(item);
+          }
         }
 
-        // Dados de exemplo (fallback)
-        function loadExampleData() {
-            menuData = [
-                { id: 1, name: "Frango Grelhado Premium", category: "aves", price: 25.90, description: "Peito de frango grelhado temperado com ervas naturais e especiarias selecionadas", protein: "Alta", calories: "Baixa", image_url: "https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=Frango+Grelhado", whatsapp_number: "+5511978361049" },
-                { id: 2, name: "Salmão Grelhado", category: "peixes", price: 35.90, description: "Filé de salmão grelhado com temperos especiais e acompanhamentos fitness", protein: "Alta", calories: "Baixa", image_url: "https://via.placeholder.com/300x200/F59E0B/FFFFFF?text=Salmao+Grelhado", whatsapp_number: "+5511978361049" },
-                { id: 3, name: "Salada Caesar Fitness", category: "saladas", price: 18.90, description: "Salada caesar com frango grelhado, molho especial e ingredientes frescos", protein: "Média", calories: "Baixa", image_url: "https://via.placeholder.com/300x200/10B981/FFFFFF?text=Salada+Caesar", whatsapp_number: "+5511978361049" },
-                { id: 4, name: "Picanha Premium", category: "bovinos", price: 42.90, description: "Picanha suculenta grelhada na brasa com temperos especiais", protein: "Alta", calories: "Média", image_url: "https://via.placeholder.com/300x200/EF4444/FFFFFF?text=Picanha+Premium", whatsapp_number: "+5511978361049" },
-                { id: 5, name: "Bowl Vegetariano", category: "vegetarianos", price: 22.90, description: "Bowl completo com quinoa, legumes grelhados e molho tahine", protein: "Média", calories: "Baixa", image_url: "https://via.placeholder.com/300x200/10B981/FFFFFF?text=Bowl+Vegetariano", whatsapp_number: "+5511978361049" }
-            ];
+        return data;
+      }
 
-            renderCategories();
-            renderMenuItems();
-            
-            document.getElementById('loadingState').classList.add('hidden');
-            document.getElementById('mainContent').classList.remove('hidden');
-        }
+      // Dados de exemplo (fallback)
+      function loadExampleData() {
+        menuData = [
+          {
+            id: 1,
+            name: "Frango Grelhado Premium",
+            category: "aves",
+            price: 25.9,
+            description:
+              "Peito de frango grelhado temperado com ervas naturais e especiarias selecionadas",
+            protein: "Alta",
+            calories: "Baixa",
+            image_url:
+              "https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=Frango+Grelhado",
+            whatsapp_number: "+5511978361049",
+          },
+          {
+            id: 2,
+            name: "Salmão Grelhado",
+            category: "peixes",
+            price: 35.9,
+            description:
+              "Filé de salmão grelhado com temperos especiais e acompanhamentos fitness",
+            protein: "Alta",
+            calories: "Baixa",
+            image_url:
+              "https://via.placeholder.com/300x200/F59E0B/FFFFFF?text=Salmao+Grelhado",
+            whatsapp_number: "+5511978361049",
+          },
+          {
+            id: 3,
+            name: "Salada Caesar Fitness",
+            category: "saladas",
+            price: 18.9,
+            description:
+              "Salada caesar com frango grelhado, molho especial e ingredientes frescos",
+            protein: "Média",
+            calories: "Baixa",
+            image_url:
+              "https://via.placeholder.com/300x200/10B981/FFFFFF?text=Salada+Caesar",
+            whatsapp_number: "+5511978361049",
+          },
+          {
+            id: 4,
+            name: "Picanha Premium",
+            category: "bovinos",
+            price: 42.9,
+            description:
+              "Picanha suculenta grelhada na brasa com temperos especiais",
+            protein: "Alta",
+            calories: "Média",
+            image_url:
+              "https://via.placeholder.com/300x200/EF4444/FFFFFF?text=Picanha+Premium",
+            whatsapp_number: "+5511978361049",
+          },
+          {
+            id: 5,
+            name: "Bowl Vegetariano",
+            category: "vegetarianos",
+            price: 22.9,
+            description:
+              "Bowl completo com quinoa, legumes grelhados e molho tahine",
+            protein: "Média",
+            calories: "Baixa",
+            image_url:
+              "https://via.placeholder.com/300x200/10B981/FFFFFF?text=Bowl+Vegetariano",
+            whatsapp_number: "+5511978361049",
+          },
+        ];
 
-        // Função para renderizar categorias
-        function renderCategories() {
-            const categories = [...new Set(menuData.map(item => item.category))];
-            const selectDropdown = document.getElementById('selectDropdown');
-            
-            const categoryIcons = {
-                'aves': '🐔',
-                'peixes': '🐟',
-                'bovinos': '🥩',
-                'suinos': '🐷',
-                'vegetarianos': '🌱',
-                'Monte sua Massa': '🍝',
-                'premium': '⭐',
-                'saladas': '🥗'
-            };
+        renderCategories();
+        renderMenuItems();
 
-            const categoryNames = {
-                'aves': 'Aves',
-                'peixes': 'Peixes & Frutos do Mar',
-                'bovinos': 'Bovinos',
-                'suinos': 'Suínos',
-                'vegetarianos': 'Vegetarianos',
-                'Monte sua Massa': 'Monte sua Massa',
-                'premium': 'Seleção Premium',
-                'saladas': 'Saladas do Chef'
-            };
+        document.getElementById("loadingState").classList.add("hidden");
+        document.getElementById("mainContent").classList.remove("hidden");
+      }
 
-            // Adicionar opção "Todos os Pratos"
-            selectDropdown.innerHTML = `
+      // Função para renderizar categorias
+      function renderCategories() {
+        const categories = [...new Set(menuData.map((item) => item.category))];
+        const selectDropdown = document.getElementById("selectDropdown");
+
+        const categoryIcons = {
+          aves: "🐔",
+          peixes: "🐟",
+          bovinos: "🥩",
+          suinos: "🐷",
+          vegetarianos: "🌱",
+          "Monte sua Massa": "🍝",
+          premium: "⭐",
+          saladas: "🥗",
+        };
+
+        const categoryNames = {
+          aves: "Aves",
+          peixes: "Peixes & Frutos do Mar",
+          bovinos: "Bovinos",
+          suinos: "Suínos",
+          vegetarianos: "Vegetarianos",
+          "Monte sua Massa": "Monte sua Massa",
+          premium: "Seleção Premium",
+          saladas: "Saladas do Chef",
+        };
+
+        // Adicionar opção "Todos os Pratos"
+        selectDropdown.innerHTML = `
                 <div class="custom-select-option selected" data-category="all">
                     🍽️ Todos os Pratos
                 </div>
             `;
 
-            // Adicionar outras categorias
-            categories.forEach(category => {
-                const icon = categoryIcons[category] || '🍽️';
-                const categoryName = categoryNames[category] || category.charAt(0).toUpperCase() + category.slice(1);
-                
-                selectDropdown.innerHTML += `
+        // Adicionar outras categorias
+        categories.forEach((category) => {
+          const icon = categoryIcons[category] || "🍽️";
+          const categoryName =
+            categoryNames[category] ||
+            category.charAt(0).toUpperCase() + category.slice(1);
+
+          selectDropdown.innerHTML += `
                     <div class="custom-select-option" data-category="${category}">
                         ${icon} ${categoryName}
                     </div>
                 `;
-            });
+        });
 
-            // Adicionar event listeners para as opções
-            document.querySelectorAll('.custom-select-option').forEach(option => {
-                option.addEventListener('click', (e) => {
-                    const selectedCategory = e.target.dataset.category;
-                    const selectedText = e.target.textContent.trim();
-                    
-                    // Atualizar categoria atual
-                    currentCategory = selectedCategory;
-                    
-                    // Atualizar texto selecionado
-                    document.getElementById('selectedCategory').textContent = selectedText;
-                    
-                    // Atualizar opções selecionadas
-                    document.querySelectorAll('.custom-select-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                    e.target.classList.add('selected');
-                    
-                    // Fechar dropdown
-                    closeSelectDropdown();
-                    
-                    // Renderizar itens do menu
-                    renderMenuItems();
-                });
-            });
+        // Adicionar event listeners para as opções
+        document.querySelectorAll(".custom-select-option").forEach((option) => {
+          option.addEventListener("click", (e) => {
+            const selectedCategory = e.target.dataset.category;
+            const selectedText = e.target.textContent.trim();
 
-            // Inicializar funcionalidade do select
-            initializeSelect();
+            // Atualizar categoria atual
+            currentCategory = selectedCategory;
+
+            // Atualizar texto selecionado
+            document.getElementById("selectedCategory").textContent =
+              selectedText;
+
+            // Atualizar opções selecionadas
+            document
+              .querySelectorAll(".custom-select-option")
+              .forEach((opt) => {
+                opt.classList.remove("selected");
+              });
+            e.target.classList.add("selected");
+
+            // Fechar dropdown
+            closeSelectDropdown();
+
+            // Renderizar itens do menu
+            renderMenuItems();
+          });
+        });
+
+        // Inicializar funcionalidade do select
+        initializeSelect();
+      }
+
+      // Função para inicializar o comportamento do Select
+      function initializeSelect() {
+        const categorySelect = document.getElementById("categorySelect");
+        const selectDropdown = document.getElementById("selectDropdown");
+        const selectArrow = document.getElementById("selectArrow");
+
+        // Abrir/fechar dropdown ao clicar no select
+        categorySelect.addEventListener("click", (e) => {
+          e.stopPropagation();
+          toggleSelectDropdown();
+        });
+
+        // Fechar dropdown ao clicar fora
+        document.addEventListener("click", (e) => {
+          if (
+            !categorySelect.contains(e.target) &&
+            !selectDropdown.contains(e.target)
+          ) {
+            closeSelectDropdown();
+          }
+        });
+
+        // Fechar dropdown ao pressionar Escape
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeSelectDropdown();
+          }
+        });
+      }
+
+      // Função para alternar o dropdown
+      function toggleSelectDropdown() {
+        const selectDropdown = document.getElementById("selectDropdown");
+        const categorySelect = document.getElementById("categorySelect");
+        const selectArrow = document.getElementById("selectArrow");
+
+        if (selectDropdown.classList.contains("hidden")) {
+          openSelectDropdown();
+        } else {
+          closeSelectDropdown();
         }
+      }
 
-        // Função para inicializar o comportamento do Select
-        function initializeSelect() {
-            const categorySelect = document.getElementById('categorySelect');
-            const selectDropdown = document.getElementById('selectDropdown');
-            const selectArrow = document.getElementById('selectArrow');
+      // Função para abrir o dropdown
+      function openSelectDropdown() {
+        const selectDropdown = document.getElementById("selectDropdown");
+        const categorySelect = document.getElementById("categorySelect");
+        const selectArrow = document.getElementById("selectArrow");
 
-            // Abrir/fechar dropdown ao clicar no select
-            categorySelect.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleSelectDropdown();
-            });
+        selectDropdown.classList.remove("hidden");
+        selectDropdown.classList.add("show");
+        categorySelect.classList.add("active");
+        selectArrow.style.transform = "rotate(180deg)";
+      }
 
-            // Fechar dropdown ao clicar fora
-            document.addEventListener('click', (e) => {
-                if (!categorySelect.contains(e.target) && !selectDropdown.contains(e.target)) {
-                    closeSelectDropdown();
-                }
-            });
+      // Função para fechar o dropdown
+      function closeSelectDropdown() {
+        const selectDropdown = document.getElementById("selectDropdown");
+        const categorySelect = document.getElementById("categorySelect");
+        const selectArrow = document.getElementById("selectArrow");
 
-            // Fechar dropdown ao pressionar Escape
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeSelectDropdown();
-                }
-            });
-        }
+        selectDropdown.classList.add("hidden");
+        selectDropdown.classList.remove("show");
+        categorySelect.classList.remove("active");
+        selectArrow.style.transform = "rotate(0deg)";
+      }
 
-        // Função para alternar o dropdown
-        function toggleSelectDropdown() {
-            const selectDropdown = document.getElementById('selectDropdown');
-            const categorySelect = document.getElementById('categorySelect');
-            const selectArrow = document.getElementById('selectArrow');
+      // Função para retornar para o todos os pratos ao clicar na logo
+      const renderMenuInicial = document.querySelector("#logoImage");
+      renderMenuInicial.addEventListener("click", () => {
+        currentCategory = 'all';
 
-            if (selectDropdown.classList.contains('hidden')) {
-                openSelectDropdown();
-            } else {
-                closeSelectDropdown();
-            }
-        }
+        document.getElementById('selectedCategory').textContent = 'Todos os Pratos';
+        renderMenuItems();
+      });
 
-        // Função para abrir o dropdown
-        function openSelectDropdown() {
-            const selectDropdown = document.getElementById('selectDropdown');
-            const categorySelect = document.getElementById('categorySelect');
-            const selectArrow = document.getElementById('selectArrow');
+      // Função para renderizar itens do menu
+      function renderMenuItems() {
+        const menuItems = document.getElementById("menuItems");
+        let filteredItems =
+          currentCategory === "all"
+            ? menuData
+            : menuData.filter((item) => item.category === currentCategory);
 
-            selectDropdown.classList.remove('hidden');
-            selectDropdown.classList.add('show');
-            categorySelect.classList.add('active');
-            selectArrow.style.transform = 'rotate(180deg)';
-        }
+        // Filtrar itens da categoria "Monte sua Massa" para não aparecerem na lista principal
+        filteredItems = filteredItems.filter(
+          (item) => item.category !== "Monte sua Massa"
+        );
 
-        // Função para fechar o dropdown
-        function closeSelectDropdown() {
-            const selectDropdown = document.getElementById('selectDropdown');
-            const categorySelect = document.getElementById('categorySelect');
-            const selectArrow = document.getElementById('selectArrow');
+        menuItems.innerHTML = "";
 
-            selectDropdown.classList.add('hidden');
-            selectDropdown.classList.remove('show');
-            categorySelect.classList.remove('active');
-            selectArrow.style.transform = 'rotate(0deg)';
-        }
-
-        // Função para renderizar itens do menu
-        function renderMenuItems() {
-            const menuItems = document.getElementById('menuItems');
-            let filteredItems = currentCategory === 'all' 
-                ? menuData 
-                : menuData.filter(item => item.category === currentCategory);
-
-            // Filtrar itens da categoria "Monte sua Massa" para não aparecerem na lista principal
-            filteredItems = filteredItems.filter(item => item.category !== "Monte sua Massa");
-
-            menuItems.innerHTML = '';
-
-            // Se a categoria selecionada for "Monte sua Massa", mostrar botão especial
-            if (currentCategory === "Monte sua Massa") {
-                menuItems.innerHTML = `
+        // Se a categoria selecionada for "Monte sua Massa", mostrar botão especial
+        if (currentCategory === "Monte sua Massa") {
+          menuItems.innerHTML = `
                     <div class="col-span-full flex justify-center">
                         <div class="menu-item-card rounded-3xl overflow-hidden shadow-xl card-hover animate-fade-in max-w-md w-full">
                             <div class="p-8 text-center">
@@ -1075,512 +1372,661 @@
                         </div>
                     </div>
                 `;
-                return;
-            }
+          return;
+        }
 
-            filteredItems.forEach(item => {
-                const itemCard = document.createElement('div');
-                itemCard.className = 'menu-item-card rounded-3xl overflow-hidden shadow-xl card-hover animate-fade-in';
-                
-                itemCard.innerHTML = `
+        filteredItems.forEach((item) => {
+          const itemCard = document.createElement("div");
+          itemCard.className =
+            "menu-item-card rounded-3xl overflow-hidden shadow-xl card-hover animate-fade-in";
+
+          itemCard.innerHTML = `
                     <div class="relative">
-                        <img src="${item.image_url || 'https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=Prato'}" 
+                        <img src="${
+                          item.image_url ||
+                          "https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=Prato"
+                        }" 
                             alt="${item.name}" 
                             class="w-full h-48 md:h-52 object-cover"
                             onerror="this.src='https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=' + encodeURIComponent('Prato')}">
                         <div class="absolute top-4 right-4">
-                            <span class="premium-badge text-xs">${item.protein || 'Destaque'}</span>
+                            <span class="premium-badge text-xs">${
+                              item.protein || "Destaque"
+                            }</span>
                         </div>
                         <div class="absolute bottom-4 left-4">
-                            <span class="fitness-badge text-xs">${item.calories || 'Favorito'}</span>
+                            <span class="fitness-badge text-xs">${
+                              item.calories || "Favorito"
+                            }</span>
                         </div>
                     </div>
                     <div class="p-4 md:p-6">
-                        <h3 class="text-lg md:text-xl font-black text-white mb-3">${item.name}</h3>
-                        <p class="text-gray-300 text-xs md:text-sm mb-4 md:mb-6 leading-relaxed">${item.description || 'Deliciosa refeição preparada com ingredientes selecionados'}</p>
+                        <h3 class="text-lg md:text-xl font-black text-white mb-3">${
+                          item.name
+                        }</h3>
+                        <p class="text-gray-300 text-xs md:text-sm mb-4 md:mb-6 leading-relaxed">${
+                          item.description ||
+                          "Deliciosa refeição preparada com ingredientes selecionados"
+                        }</p>
                         <div class="flex justify-between items-center">
-                            <span class="price-highlight text-lg md:text-xl">R$ ${item.price ? item.price.toFixed(2).replace('.', ',') : '0,00'}</span>
-                            <button onclick="addToCart('${item.id}')" class="add-btn text-mustache-black px-4 md:px-6 py-2 md:py-3 rounded-full transition-all font-bold shadow-lg text-sm md:text-base">
+                            <span class="price-highlight text-lg md:text-xl">R$ ${
+                              item.price
+                                ? item.price.toFixed(2).replace(".", ",")
+                                : "0,00"
+                            }</span>
+                            <button onclick="addToCart('${
+                              item.id
+                            }')" class="add-btn text-mustache-black px-4 md:px-6 py-2 md:py-3 rounded-full transition-all font-bold shadow-lg text-sm md:text-base">
                                 Adicionar
                             </button>
                         </div>
                     </div>
                 `;
 
-                menuItems.appendChild(itemCard);
-            });
+          menuItems.appendChild(itemCard);
+        });
+      }
+
+      // Função para adicionar ao carrinho
+      function addToCart(itemId) {
+        // Converter itemId para número se for string
+        const numericId =
+          typeof itemId === "string" ? parseInt(itemId) : itemId;
+        const item = menuData.find((i) => i.id === numericId);
+        if (!item) return;
+
+        // Verificar se é da categoria "Monte sua Massa"
+        if (item.category === "Monte sua Massa") {
+          openCustomPastaModal();
+          return;
         }
 
-        // Função para adicionar ao carrinho
-        function addToCart(itemId) {
-            // Converter itemId para número se for string
-            const numericId = typeof itemId === 'string' ? parseInt(itemId) : itemId;
-            const item = menuData.find(i => i.id === numericId);
-            if (!item) return;
-
-            // Verificar se é da categoria "Monte sua Massa"
-            if (item.category === "Monte sua Massa") {
-                openCustomPastaModal();
-                return;
-            }
-
-            const existingItem = cart.find(i => i.id === numericId);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...item, quantity: 1 });
-            }
-
-            updateCartUI();
-            renderCart();
-            
-            // Feedback visual
-            const button = event.target;
-            const originalText = button.textContent;
-            button.textContent = 'Adicionado!';
-            button.classList.add('bg-mustache-green');
-            
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.classList.remove('bg-mustache-green');
-            }, 1000);
+        const existingItem = cart.find((i) => i.id === numericId);
+        if (existingItem) {
+          existingItem.quantity += 1;
+        } else {
+          cart.push({ ...item, quantity: 1 });
         }
 
-        // Função para atualizar UI do carrinho
-        function updateCartUI() {
-            const cartCount = document.getElementById('cartCount');
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = totalItems;
+        updateCartUI();
+        renderCart();
 
-            if (totalItems > 0) {
-                cartCount.classList.add('animate-bounce-slow');
-                setTimeout(() => cartCount.classList.remove('animate-bounce-slow'), 1000);
-            }
+        // Feedback visual
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = "Adicionado!";
+        button.classList.add("bg-mustache-green");
+
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove("bg-mustache-green");
+        }, 1000);
+      }
+
+      // Função para atualizar UI do carrinho
+      function updateCartUI() {
+        const cartCount = document.getElementById("cartCount");
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+
+        if (totalItems > 0) {
+          cartCount.classList.add("animate-bounce-slow");
+          setTimeout(
+            () => cartCount.classList.remove("animate-bounce-slow"),
+            1000
+          );
+        }
+      }
+
+      // Função para renderizar carrinho
+      function renderCart() {
+        const cartItems = document.getElementById("cartItems");
+        const cartTotal = document.getElementById("cartTotal");
+
+        if (cart.length === 0) {
+          cartItems.innerHTML =
+            '<p class="text-gray-400 text-center py-8">Seu carrinho está vazio</p>';
+          cartTotal.textContent = "0,00";
+          return;
         }
 
-        // Função para renderizar carrinho
-        function renderCart() {
-            const cartItems = document.getElementById('cartItems');
-            const cartTotal = document.getElementById('cartTotal');
+        let total = 0;
+        cartItems.innerHTML = "";
 
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-gray-400 text-center py-8">Seu carrinho está vazio</p>';
-                cartTotal.textContent = '0,00';
-                return;
-            }
+        cart.forEach((item) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
 
-            let total = 0;
-            cartItems.innerHTML = '';
-
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-
-                const cartItem = document.createElement('div');
-                cartItem.className = 'flex justify-between items-center py-4 border-b border-gray-700';
-                cartItem.innerHTML = `
+          const cartItem = document.createElement("div");
+          cartItem.className =
+            "flex justify-between items-center py-4 border-b border-gray-700";
+          cartItem.innerHTML = `
                     <div class="flex-1">
-                        <h4 class="text-white font-bold text-sm md:text-base">${item.name}</h4>
-                        <p class="text-gray-400 text-xs md:text-sm">R$ ${item.price.toFixed(2).replace('.', ',')} cada</p>
+                        <h4 class="text-white font-bold text-sm md:text-base">${
+                          item.name
+                        }</h4>
+                        <p class="text-gray-400 text-xs md:text-sm">R$ ${item.price
+                          .toFixed(2)
+                          .replace(".", ",")} cada</p>
                     </div>
                     <div class="flex items-center gap-2 md:gap-3">
-                        <button onclick="updateQuantity('${item.id}', -1)" class="bg-gray-700 text-white w-8 h-8 rounded-full hover:bg-gray-600 transition-all text-sm">-</button>
-                        <span class="text-white font-bold text-sm md:text-base">${item.quantity}</span>
-                        <button onclick="updateQuantity('${item.id}', 1)" class="bg-mustache-purple text-white w-8 h-8 rounded-full hover:bg-purple-600 transition-all text-sm">+</button>
-                        <button onclick="removeFromCart('${item.id}')" class="bg-mustache-red text-white w-8 h-8 rounded-full hover:bg-red-600 transition-all ml-2 text-sm">×</button>
+                        <button onclick="updateQuantity('${
+                          item.id
+                        }', -1)" class="bg-gray-700 text-white w-8 h-8 rounded-full hover:bg-gray-600 transition-all text-sm">-</button>
+                        <span class="text-white font-bold text-sm md:text-base">${
+                          item.quantity
+                        }</span>
+                        <button onclick="updateQuantity('${
+                          item.id
+                        }', 1)" class="bg-mustache-purple text-white w-8 h-8 rounded-full hover:bg-purple-600 transition-all text-sm">+</button>
+                        <button onclick="removeFromCart('${
+                          item.id
+                        }')" class="bg-mustache-red text-white w-8 h-8 rounded-full hover:bg-red-600 transition-all ml-2 text-sm">×</button>
                     </div>
                 `;
-                cartItems.appendChild(cartItem);
-            });
+          cartItems.appendChild(cartItem);
+        });
 
-            cartTotal.textContent = total.toFixed(2).replace('.', ',');
+        cartTotal.textContent = total.toFixed(2).replace(".", ",");
+      }
+
+      // Função para atualizar quantidade
+      function updateQuantity(itemId, change) {
+        // Converter itemId para número se for string e for um número válido
+        const numericId =
+          typeof itemId === "string" && !isNaN(parseInt(itemId))
+            ? parseInt(itemId)
+            : itemId;
+        const item = cart.find((i) => i.id === numericId);
+        if (!item) return;
+
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          removeFromCart(numericId);
+          return;
         }
 
-        // Função para atualizar quantidade
-        function updateQuantity(itemId, change) {
-            // Converter itemId para número se for string e for um número válido
-            const numericId = typeof itemId === 'string' && !isNaN(parseInt(itemId)) ? parseInt(itemId) : itemId;
-            const item = cart.find(i => i.id === numericId);
-            if (!item) return;
+        updateCartUI();
+        renderCart();
+      }
 
-            item.quantity += change;
-            if (item.quantity <= 0) {
-                removeFromCart(numericId);
-                return;
-            }
+      // Função para remover do carrinho
+      function removeFromCart(itemId) {
+        // Converter itemId para número se for string e for um número válido
+        const numericId =
+          typeof itemId === "string" && !isNaN(parseInt(itemId))
+            ? parseInt(itemId)
+            : itemId;
+        cart = cart.filter((i) => i.id !== numericId);
+        updateCartUI();
+        renderCart();
+      }
 
-            updateCartUI();
-            renderCart();
+      // Função para abrir combo WhatsApp
+      function openComboWhatsApp() {
+        const message = encodeURIComponent(
+          `Olá! Gostaria de solicitar um combo personalizado do Rhelyi's Mustache. Podem me ajudar com as opções disponíveis?`
+        );
+        window.open(
+          `https://wa.me/${defaultWhatsAppNumber.replace(
+            "+",
+            ""
+          )}?text=${message}`,
+          "_blank"
+        );
+      }
+
+      // Função para enviar pedido via WhatsApp
+      function sendWhatsAppOrder() {
+        const customerName = document
+          .getElementById("customerName")
+          .value.trim();
+        const customerAddress = document
+          .getElementById("customerAddress")
+          .value.trim();
+        // const customerNotes = document.getElementById('customerNotes').value.trim(); // Campo removido temporariamente
+
+        if (!customerName || !customerAddress) {
+          alert("Por favor, preencha seu nome e endereço de entrega.");
+          return;
         }
 
-        // Função para remover do carrinho
-        function removeFromCart(itemId) {
-            // Converter itemId para número se for string e for um número válido
-            const numericId = typeof itemId === 'string' && !isNaN(parseInt(itemId)) ? parseInt(itemId) : itemId;
-            cart = cart.filter(i => i.id !== numericId);
-            updateCartUI();
-            renderCart();
+        if (cart.length === 0) {
+          alert("Seu carrinho está vazio.");
+          return;
         }
 
-        // Função para abrir combo WhatsApp
-        function openComboWhatsApp() {
-            const message = encodeURIComponent(`Olá! Gostaria de solicitar um combo personalizado do Rhelyi's Mustache. Podem me ajudar com as opções disponíveis?`);
-            window.open(`https://wa.me/${defaultWhatsAppNumber.replace('+', '')}?text=${message}`, '_blank');
-        }
+        let message = `🍽️ *PEDIDO RHELYI'S MUSTACHE*\n\n`;
+        message += `👤 *Cliente:* ${customerName}\n`;
+        message += `📍 *Endereço:* ${customerAddress}\n\n`;
+        message += `🛒 *Itens do Pedido:*\n`;
 
-        // Função para enviar pedido via WhatsApp
-        function sendWhatsAppOrder() {
-            const customerName = document.getElementById('customerName').value.trim();
-            const customerAddress = document.getElementById('customerAddress').value.trim();
-            // const customerNotes = document.getElementById('customerNotes').value.trim(); // Campo removido temporariamente
+        let total = 0;
+        cart.forEach((item) => {
+          const itemTotal = item.price * item.quantity;
+          total += itemTotal;
+          message += `• ${item.quantity}x ${item.name} - R$ ${itemTotal
+            .toFixed(2)
+            .replace(".", ",")}\n`;
+        });
 
-            if (!customerName || !customerAddress) {
-                alert('Por favor, preencha seu nome e endereço de entrega.');
-                return;
-            }
+        message += `\n💰 *Total: R$ ${total.toFixed(2).replace(".", ",")}*\n`;
 
-            if (cart.length === 0) {
-                alert('Seu carrinho está vazio.');
-                return;
-            }
+        // if (customerNotes) {
+        //     message += `\n💬 *Observações:* ${customerNotes}\n`;
+        // }
 
-            let message = `🍽️ *PEDIDO RHELYI'S MUSTACHE*\n\n`;
-            message += `👤 *Cliente:* ${customerName}\n`;
-            message += `📍 *Endereço:* ${customerAddress}\n\n`;
-            message += `🛒 *Itens do Pedido:*\n`;
+        message += `\n🚚 Aguardo confirmação do pedido e informações sobre entrega!`;
 
-            let total = 0;
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                message += `• ${item.quantity}x ${item.name} - R$ ${itemTotal.toFixed(2).replace('.', ',')}\n`;
-            });
+        const encodedMessage = encodeURIComponent(message);
+        window.open(
+          `https://wa.me/${defaultWhatsAppNumber.replace(
+            "+",
+            ""
+          )}?text=${encodedMessage}`,
+          "_blank"
+        );
+      }
 
-            message += `\n💰 *Total: R$ ${total.toFixed(2).replace('.', ',')}*\n`;
+      // Variáveis para massa personalizada
+      let customPastaSelection = {
+        base: null,
+        baseEspecial: null,
+        molho: null,
+        proteina: {}, // Mudado para objeto para suportar múltiplas proteínas com quantidades
+      };
 
-            // if (customerNotes) {
-            //     message += `\n💬 *Observações:* ${customerNotes}\n`;
-            // }
+      // Função para abrir modal de massa personalizada
+      function openCustomPastaModal() {
+        const modal = document.getElementById("customPastaModal");
+        modal.classList.remove("hidden");
+        renderCustomPastaContent();
+      }
 
-            message += `\n🚚 Aguardo confirmação do pedido e informações sobre entrega!`;
+      // Função para fechar modal de massa personalizada
+      function closeCustomPastaModal() {
+        const modal = document.getElementById("customPastaModal");
+        modal.classList.add("hidden");
+        // Resetar seleções
+        customPastaSelection = {
+          base: null,
+          baseEspecial: null,
+          molho: null,
+          proteina: {},
+        };
+      }
 
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/${defaultWhatsAppNumber.replace('+', '')}?text=${encodedMessage}`, '_blank');
-        }
+      // Função para renderizar conteúdo da modal de massa personalizada
+      function renderCustomPastaContent() {
+        const content = document.getElementById("customPastaContent");
+        const pastaItems = menuData.filter(
+          (item) => item.category === "Monte sua Massa"
+        );
 
-        // Variáveis para massa personalizada
-        let customPastaSelection = {
-            base: null,
-            baseEspecial: null,
-            molho: null,
-            proteina: {} // Mudado para objeto para suportar múltiplas proteínas com quantidades
+        // Agrupar itens por tipo
+        const groupedItems = {
+          base: pastaItems.filter((item) => item.type === "Base"),
+          baseEspecial: pastaItems.filter(
+            (item) => item.type === "Base Especial"
+          ),
+          molho: pastaItems.filter((item) => item.type === "Molho"),
+          proteina: pastaItems.filter((item) => item.type === "Proteina"),
         };
 
-        // Função para abrir modal de massa personalizada
-        function openCustomPastaModal() {
-            const modal = document.getElementById('customPastaModal');
-            modal.classList.remove('hidden');
-            renderCustomPastaContent();
-        }
+        let html = "";
 
-        // Função para fechar modal de massa personalizada
-        function closeCustomPastaModal() {
-            const modal = document.getElementById('customPastaModal');
-            modal.classList.add('hidden');
-            // Resetar seleções
-            customPastaSelection = {
-                base: null,
-                baseEspecial: null,
-                molho: null,
-                proteina: {}
-            };
-        }
-
-        // Função para renderizar conteúdo da modal de massa personalizada
-        function renderCustomPastaContent() {
-            const content = document.getElementById('customPastaContent');
-            const pastaItems = menuData.filter(item => item.category === "Monte sua Massa");
-            
-            // Agrupar itens por tipo
-            const groupedItems = {
-                base: pastaItems.filter(item => item.type === "Base"),
-                baseEspecial: pastaItems.filter(item => item.type === "Base Especial"),
-                molho: pastaItems.filter(item => item.type === "Molho"),
-                proteina: pastaItems.filter(item => item.type === "Proteina")
-            };
-
-            let html = '';
-
-            // Base (obrigatória)
-            html += `
+        // Base (obrigatória)
+        html += `
                 <div class="mb-6">
                     <h3 class="text-lg font-bold text-white mb-4">🍝 Escolha sua Base *</h3>
                     <div class="space-y-3">
             `;
-            groupedItems.base.forEach(item => {
-                html += `
+        groupedItems.base.forEach((item) => {
+          html += `
                     <label class="flex items-center p-3 bg-gray-700 rounded-lg cursor-pointer hover:bg-gray-600 transition-all">
-                        <input type="radio" name="base" value="${item.id}" class="mr-3 text-mustache-purple" onchange="updateCustomPastaSelection('base', ${item.id})">
+                        <input type="radio" name="base" value="${
+                          item.id
+                        }" class="mr-3 text-mustache-purple" onchange="updateCustomPastaSelection('base', ${
+            item.id
+          })">
                         <div class="flex-1">
-                            <div class="font-semibold text-white">${item.name}</div>
-                            <div class="text-sm text-gray-300">${item.description}</div>
+                            <div class="font-semibold text-white">${
+                              item.name
+                            }</div>
+                            <div class="text-sm text-gray-300">${
+                              item.description
+                            }</div>
                         </div>
-                        <div class="text-mustache-yellow font-bold">${item.price > 0 ? 'R$ ' + item.price.toFixed(2).replace('.', ',') : ''}</div>
+                        <div class="text-mustache-yellow font-bold">${
+                          item.price > 0
+                            ? "R$ " + item.price.toFixed(2).replace(".", ",")
+                            : ""
+                        }</div>
                     </label>
                 `;
-            });
-            html += '</div></div>';
+        });
+        html += "</div></div>";
 
-            // Base Especial (opcional)
-            if (groupedItems.baseEspecial.length > 0) {
-                html += `
+        // Base Especial (opcional)
+        if (groupedItems.baseEspecial.length > 0) {
+          html += `
                     <div class="mb-6">
                         <h3 class="text-lg font-bold text-white mb-4">✨ Base Especial (Opcional)</h3>
                         <div class="space-y-3">
                 `;
-                groupedItems.baseEspecial.forEach(item => {
-                    html += `
+          groupedItems.baseEspecial.forEach((item) => {
+            html += `
                         <label class="flex items-center p-3 bg-gray-700 rounded-lg cursor-pointer hover:bg-gray-600 transition-all">
-                            <input type="radio" name="baseEspecial" value="${item.id}" class="mr-3 text-mustache-purple" onchange="updateCustomPastaSelection('baseEspecial', ${item.id})">
+                            <input type="radio" name="baseEspecial" value="${
+                              item.id
+                            }" class="mr-3 text-mustache-purple" onchange="updateCustomPastaSelection('baseEspecial', ${
+              item.id
+            })">
                             <div class="flex-1">
-                                <div class="font-semibold text-white">${item.name}</div>
-                                <div class="text-sm text-gray-300">${item.description}</div>
+                                <div class="font-semibold text-white">${
+                                  item.name
+                                }</div>
+                                <div class="text-sm text-gray-300">${
+                                  item.description
+                                }</div>
                             </div>
-                            <div class="text-mustache-yellow font-bold">${item.price > 0 ? '+R$ ' + item.price.toFixed(2).replace('.', ',') : ''}</div>
+                            <div class="text-mustache-yellow font-bold">${
+                              item.price > 0
+                                ? "+R$ " +
+                                  item.price.toFixed(2).replace(".", ",")
+                                : ""
+                            }</div>
                         </label>
                     `;
-                });
-                html += '</div></div>';
-            }
+          });
+          html += "</div></div>";
+        }
 
-            // Molho (obrigatório)
-            html += `
+        // Molho (obrigatório)
+        html += `
                 <div class="mb-6">
                     <h3 class="text-lg font-bold text-white mb-4">🍅 Escolha seu Molho *</h3>
                     <div class="space-y-3">
             `;
-            groupedItems.molho.forEach(item => {
-                html += `
+        groupedItems.molho.forEach((item) => {
+          html += `
                     <label class="flex items-center p-3 bg-gray-700 rounded-lg cursor-pointer hover:bg-gray-600 transition-all">
-                        <input type="radio" name="molho" value="${item.id}" class="mr-3 text-mustache-purple" onchange="updateCustomPastaSelection('molho', ${item.id})">
+                        <input type="radio" name="molho" value="${
+                          item.id
+                        }" class="mr-3 text-mustache-purple" onchange="updateCustomPastaSelection('molho', ${
+            item.id
+          })">
                         <div class="flex-1">
-                            <div class="font-semibold text-white">${item.name}</div>
-                            <div class="text-sm text-gray-300">${item.description}</div>
+                            <div class="font-semibold text-white">${
+                              item.name
+                            }</div>
+                            <div class="text-sm text-gray-300">${
+                              item.description
+                            }</div>
                         </div>
-                        <div class="text-mustache-yellow font-bold">${item.price > 0 ? 'R$ ' + item.price.toFixed(2).replace('.', ',') : ''}</div>
+                        <div class="text-mustache-yellow font-bold">${
+                          item.price > 0
+                            ? "R$ " + item.price.toFixed(2).replace(".", ",")
+                            : ""
+                        }</div>
                     </label>
                 `;
-            });
-            html += '</div></div>';
+        });
+        html += "</div></div>";
 
-            // Proteína (múltipla seleção com quantidade)
-            html += `
+        // Proteína (múltipla seleção com quantidade)
+        html += `
                 <div class="mb-6">
                     <h3 class="text-lg font-bold text-white mb-4">🥩 Escolha suas Proteínas</h3>
                     <div class="space-y-3">
             `;
-            groupedItems.proteina.forEach(item => {
-                html += `
+        groupedItems.proteina.forEach((item) => {
+          html += `
                     <div class="p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-all">
                         <div class="flex items-center">
-                            <input type="checkbox" name="proteina" value="${item.id}" class="mr-3 text-mustache-purple" onchange="toggleProteina(${item.id})">
+                            <input type="checkbox" name="proteina" value="${
+                              item.id
+                            }" class="mr-3 text-mustache-purple" onchange="toggleProteina(${
+            item.id
+          })">
                             <div class="flex-1">
-                                <div class="font-semibold text-white">${item.name}</div>
-                                <div class="text-sm text-gray-300">${item.description}</div>
+                                <div class="font-semibold text-white">${
+                                  item.name
+                                }</div>
+                                <div class="text-sm text-gray-300">${
+                                  item.description
+                                }</div>
                             </div>
                             <div class="flex flex-col items-center gap-2">
-                                <div class="text-mustache-yellow font-bold">${item.price > 0 ? 'R$ ' + item.price.toFixed(2).replace('.', ',') : ''}</div>
-                                <div class="flex items-center gap-1 ml-4" id="proteina-controls-${item.id}" style="display: none;">
-                                    <button onclick="updateProteinaQuantity('${item.id}', -1)" class="bg-gray-600 text-white w-6 h-6 rounded-full hover:bg-gray-500 transition-all text-sm">-</button>
-                                    <span class="text-white font-bold text-sm min-w-[20px] text-center" id="proteina-qty-${item.id}">1</span>
-                                    <button onclick="updateProteinaQuantity('${item.id}', 1)" class="bg-mustache-purple text-white w-6 h-6 rounded-full hover:bg-purple-600 transition-all text-sm">+</button>
+                                <div class="text-mustache-yellow font-bold">${
+                                  item.price > 0
+                                    ? "R$ " +
+                                      item.price.toFixed(2).replace(".", ",")
+                                    : ""
+                                }</div>
+                                <div class="flex items-center gap-1 ml-4" id="proteina-controls-${
+                                  item.id
+                                }" style="display: none;">
+                                    <button onclick="updateProteinaQuantity('${
+                                      item.id
+                                    }', -1)" class="bg-gray-600 text-white w-6 h-6 rounded-full hover:bg-gray-500 transition-all text-sm">-</button>
+                                    <span class="text-white font-bold text-sm min-w-[20px] text-center" id="proteina-qty-${
+                                      item.id
+                                    }">1</span>
+                                    <button onclick="updateProteinaQuantity('${
+                                      item.id
+                                    }', 1)" class="bg-mustache-purple text-white w-6 h-6 rounded-full hover:bg-purple-600 transition-all text-sm">+</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 `;
-            });
-            html += '</div></div>';
-
-            content.innerHTML = html;
-            updateCustomPastaTotal();
-        }
-
-        // Função para atualizar seleção da massa personalizada
-        function updateCustomPastaSelection(type, itemId) {
-            customPastaSelection[type] = itemId;
-            updateCustomPastaTotal();
-        }
-
-        // Função para alternar proteína (checkbox)
-        function toggleProteina(itemId) {
-            const checkbox = document.querySelector(`input[value="${itemId}"]`);
-            const controls = document.getElementById(`proteina-controls-${itemId}`);
-            
-            if (checkbox.checked) {
-                customPastaSelection.proteina[itemId] = 1;
-                controls.style.display = 'flex';
-            } else {
-                delete customPastaSelection.proteina[itemId];
-                controls.style.display = 'none';
-            }
-            updateCustomPastaTotal();
-        }
-
-        // Função para atualizar quantidade de proteína
-        function updateProteinaQuantity(itemId, change) {
-            const currentQty = customPastaSelection.proteina[itemId] || 0;
-            const newQty = Math.max(1, currentQty + change);
-            
-            customPastaSelection.proteina[itemId] = newQty;
-            document.getElementById(`proteina-qty-${itemId}`).textContent = newQty;
-            updateCustomPastaTotal();
-        }
-
-        // Função para atualizar total da massa personalizada
-        function updateCustomPastaTotal() {
-            let total = 0;
-            const totalElement = document.getElementById('customPastaTotal');
-            
-            // Adicionar base, base especial e molho
-            ['base', 'baseEspecial', 'molho'].forEach(type => {
-                const itemId = customPastaSelection[type];
-                if (itemId) {
-                    const item = menuData.find(i => i.id === itemId);
-                    if (item) {
-                        total += item.price;
-                    }
-                }
-            });
-            
-            // Adicionar proteínas (múltiplas com quantidades)
-            Object.entries(customPastaSelection.proteina).forEach(([itemId, quantity]) => {
-                const item = menuData.find(i => i.id === parseInt(itemId));
-                if (item) {
-                    total += item.price * quantity;
-                }
-            });
-            
-            totalElement.textContent = total.toFixed(2).replace('.', ',');
-        }
-
-        // Função para adicionar massa personalizada ao carrinho
-        function addCustomPastaToCart() {
-            // Validar se base e molho foram selecionados
-            if (!customPastaSelection.base || !customPastaSelection.molho) {
-                alert('Por favor, selecione pelo menos uma base e um molho.');
-                return;
-            }
-
-            // Verificar se pelo menos uma proteína foi selecionada
-            const selectedProteinas = Object.keys(customPastaSelection.proteina);
-            if (selectedProteinas.length === 0) {
-                alert('Por favor, selecione pelo menos uma proteína.');
-                return;
-            }
-
-            // Criar nome personalizado da massa
-            const baseItem = menuData.find(i => i.id === customPastaSelection.base);
-            const baseEspecialItem = customPastaSelection.baseEspecial ? menuData.find(i => i.id === customPastaSelection.baseEspecial) : null;
-            const molhoItem = menuData.find(i => i.id === customPastaSelection.molho);
-
-            let customName = `Massa Personalizada: ${baseItem.name}`;
-            if (baseEspecialItem) {
-                customName += ` + ${baseEspecialItem.name}`;
-            }
-            customName += ` + ${molhoItem.name}`;
-
-            // Adicionar proteínas ao nome
-            const proteinaNames = [];
-            Object.entries(customPastaSelection.proteina).forEach(([itemId, quantity]) => {
-                const proteinaItem = menuData.find(i => i.id === parseInt(itemId));
-                if (proteinaItem) {
-                    if (quantity > 1) {
-                        proteinaNames.push(`${quantity}x ${proteinaItem.name}`);
-                    } else {
-                        proteinaNames.push(proteinaItem.name);
-                    }
-                }
-            });
-            customName += ` + ${proteinaNames.join(', ')}`;
-
-            // Calcular preço total
-            let totalPrice = baseItem.price + molhoItem.price;
-            if (baseEspecialItem) {
-                totalPrice += baseEspecialItem.price;
-            }
-            
-            // Adicionar preço das proteínas
-            Object.entries(customPastaSelection.proteina).forEach(([itemId, quantity]) => {
-                const proteinaItem = menuData.find(i => i.id === parseInt(itemId));
-                if (proteinaItem) {
-                    totalPrice += proteinaItem.price * quantity;
-                }
-            });
-
-            // Criar descrição detalhada
-            let description = `Massa personalizada com ${baseItem.name.toLowerCase()}, ${molhoItem.name.toLowerCase()}`;
-            if (baseEspecialItem) {
-                description += `, ${baseEspecialItem.name.toLowerCase()}`;
-            }
-            description += ` e ${proteinaNames.join(', ').toLowerCase()}`;
-
-            // Criar item personalizado
-            const customItem = {
-                id: `custom_pasta_${Date.now()}`, // ID único para evitar conflitos
-                name: customName,
-                category: "Monte sua Massa",
-                price: totalPrice,
-                description: description,
-                quantity: 1,
-                isCustom: true
-            };
-
-            // Adicionar ao carrinho
-            cart.push(customItem);
-            updateCartUI();
-            
-            // Fechar modal
-            closeCustomPastaModal();
-            
-            // Feedback visual
-            alert('Massa personalizada adicionada ao carrinho!');
-        }
-
-        // Event Listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            loadMenuData();
-
-            // Carrinho
-            document.getElementById('cartBtn').addEventListener('click', () => {
-                document.getElementById('cartModal').classList.remove('hidden');
-                renderCart();
-            });
-
-            document.getElementById('closeCart').addEventListener('click', () => {
-                document.getElementById('cartModal').classList.add('hidden');
-            });
-
-            document.getElementById('sendWhatsApp').addEventListener('click', sendWhatsAppOrder);
-
-            // Fechar modal clicando fora
-            document.getElementById('cartModal').addEventListener('click', (e) => {
-                if (e.target.id === 'cartModal') {
-                    document.getElementById('cartModal').classList.add('hidden');
-                }
-            });
-
-            // Event listeners para modal de massa personalizada
-            document.getElementById('closeCustomPasta').addEventListener('click', closeCustomPastaModal);
-            document.getElementById('addCustomPastaToCart').addEventListener('click', addCustomPastaToCart);
-
-            // Fechar modal de massa personalizada clicando fora
-            document.getElementById('customPastaModal').addEventListener('click', (e) => {
-                if (e.target.id === 'customPastaModal') {
-                    closeCustomPastaModal();
-                }
-            });
         });
+        html += "</div></div>";
+
+        content.innerHTML = html;
+        updateCustomPastaTotal();
+      }
+
+      // Função para atualizar seleção da massa personalizada
+      function updateCustomPastaSelection(type, itemId) {
+        customPastaSelection[type] = itemId;
+        updateCustomPastaTotal();
+      }
+
+      // Função para alternar proteína (checkbox)
+      function toggleProteina(itemId) {
+        const checkbox = document.querySelector(`input[value="${itemId}"]`);
+        const controls = document.getElementById(`proteina-controls-${itemId}`);
+
+        if (checkbox.checked) {
+          customPastaSelection.proteina[itemId] = 1;
+          controls.style.display = "flex";
+        } else {
+          delete customPastaSelection.proteina[itemId];
+          controls.style.display = "none";
+        }
+        updateCustomPastaTotal();
+      }
+
+      // Função para atualizar quantidade de proteína
+      function updateProteinaQuantity(itemId, change) {
+        const currentQty = customPastaSelection.proteina[itemId] || 0;
+        const newQty = Math.max(1, currentQty + change);
+
+        customPastaSelection.proteina[itemId] = newQty;
+        document.getElementById(`proteina-qty-${itemId}`).textContent = newQty;
+        updateCustomPastaTotal();
+      }
+
+      // Função para atualizar total da massa personalizada
+      function updateCustomPastaTotal() {
+        let total = 0;
+        const totalElement = document.getElementById("customPastaTotal");
+
+        // Adicionar base, base especial e molho
+        ["base", "baseEspecial", "molho"].forEach((type) => {
+          const itemId = customPastaSelection[type];
+          if (itemId) {
+            const item = menuData.find((i) => i.id === itemId);
+            if (item) {
+              total += item.price;
+            }
+          }
+        });
+
+        // Adicionar proteínas (múltiplas com quantidades)
+        Object.entries(customPastaSelection.proteina).forEach(
+          ([itemId, quantity]) => {
+            const item = menuData.find((i) => i.id === parseInt(itemId));
+            if (item) {
+              total += item.price * quantity;
+            }
+          }
+        );
+
+        totalElement.textContent = total.toFixed(2).replace(".", ",");
+      }
+
+      // Função para adicionar massa personalizada ao carrinho
+      function addCustomPastaToCart() {
+        // Validar se base e molho foram selecionados
+        if (!customPastaSelection.base || !customPastaSelection.molho) {
+          alert("Por favor, selecione pelo menos uma base e um molho.");
+          return;
+        }
+
+        // Verificar se pelo menos uma proteína foi selecionada
+        const selectedProteinas = Object.keys(customPastaSelection.proteina);
+        if (selectedProteinas.length === 0) {
+          alert("Por favor, selecione pelo menos uma proteína.");
+          return;
+        }
+
+        // Criar nome personalizado da massa
+        const baseItem = menuData.find(
+          (i) => i.id === customPastaSelection.base
+        );
+        const baseEspecialItem = customPastaSelection.baseEspecial
+          ? menuData.find((i) => i.id === customPastaSelection.baseEspecial)
+          : null;
+        const molhoItem = menuData.find(
+          (i) => i.id === customPastaSelection.molho
+        );
+
+        let customName = `Massa Personalizada: ${baseItem.name}`;
+        if (baseEspecialItem) {
+          customName += ` + ${baseEspecialItem.name}`;
+        }
+        customName += ` + ${molhoItem.name}`;
+
+        // Adicionar proteínas ao nome
+        const proteinaNames = [];
+        Object.entries(customPastaSelection.proteina).forEach(
+          ([itemId, quantity]) => {
+            const proteinaItem = menuData.find(
+              (i) => i.id === parseInt(itemId)
+            );
+            if (proteinaItem) {
+              if (quantity > 1) {
+                proteinaNames.push(`${quantity}x ${proteinaItem.name}`);
+              } else {
+                proteinaNames.push(proteinaItem.name);
+              }
+            }
+          }
+        );
+        customName += ` + ${proteinaNames.join(", ")}`;
+
+        // Calcular preço total
+        let totalPrice = baseItem.price + molhoItem.price;
+        if (baseEspecialItem) {
+          totalPrice += baseEspecialItem.price;
+        }
+
+        // Adicionar preço das proteínas
+        Object.entries(customPastaSelection.proteina).forEach(
+          ([itemId, quantity]) => {
+            const proteinaItem = menuData.find(
+              (i) => i.id === parseInt(itemId)
+            );
+            if (proteinaItem) {
+              totalPrice += proteinaItem.price * quantity;
+            }
+          }
+        );
+
+        // Criar descrição detalhada
+        let description = `Massa personalizada com ${baseItem.name.toLowerCase()}, ${molhoItem.name.toLowerCase()}`;
+        if (baseEspecialItem) {
+          description += `, ${baseEspecialItem.name.toLowerCase()}`;
+        }
+        description += ` e ${proteinaNames.join(", ").toLowerCase()}`;
+
+        // Criar item personalizado
+        const customItem = {
+          id: `custom_pasta_${Date.now()}`, // ID único para evitar conflitos
+          name: customName,
+          category: "Monte sua Massa",
+          price: totalPrice,
+          description: description,
+          quantity: 1,
+          isCustom: true,
+        };
+
+        // Adicionar ao carrinho
+        cart.push(customItem);
+        updateCartUI();
+
+        // Fechar modal
+        closeCustomPastaModal();
+
+        // Feedback visual
+        alert("Massa personalizada adicionada ao carrinho!");
+      }
+
+      // Event Listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        loadMenuData();
+
+        // Carrinho
+        document.getElementById("cartBtn").addEventListener("click", () => {
+          document.getElementById("cartModal").classList.remove("hidden");
+          renderCart();
+        });
+
+        document.getElementById("closeCart").addEventListener("click", () => {
+          document.getElementById("cartModal").classList.add("hidden");
+        });
+
+        document
+          .getElementById("sendWhatsApp")
+          .addEventListener("click", sendWhatsAppOrder);
+
+        // Fechar modal clicando fora
+        document.getElementById("cartModal").addEventListener("click", (e) => {
+          if (e.target.id === "cartModal") {
+            document.getElementById("cartModal").classList.add("hidden");
+          }
+        });
+
+        // Event listeners para modal de massa personalizada
+        document
+          .getElementById("closeCustomPasta")
+          .addEventListener("click", closeCustomPastaModal);
+        document
+          .getElementById("addCustomPastaToCart")
+          .addEventListener("click", addCustomPastaToCart);
+
+        // Fechar modal de massa personalizada clicando fora
+        document
+          .getElementById("customPastaModal")
+          .addEventListener("click", (e) => {
+            if (e.target.id === "customPastaModal") {
+              closeCustomPastaModal();
+            }
+          });
+      });
     </script>
-</body>
+  </body>
 </html>
